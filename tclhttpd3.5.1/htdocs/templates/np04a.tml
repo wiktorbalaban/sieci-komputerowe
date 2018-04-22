@@ -1,0 +1,15 @@
+<!--
+  ??? czy redirect dziala ze strony tml ???
+-->
+
+[mypage::header "HTML/Tcl Templates"]
+
+<p>ncgi::query = [ncgi::nvlist]</p>
+
+<p>to jest strona np04a !!!</p>
+
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+
+[mypage::footer]

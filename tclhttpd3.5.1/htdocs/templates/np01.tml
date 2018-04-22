@@ -1,0 +1,66 @@
+<!--
+co jeszcze warto zrobic:
+  - przy kazdym odswiezeniu requestu bez sessio
+    jest tworzona nowa sesja (JAK tego uniknac?)
+      jak spowodowac zeby po pierwszym odwolaniu do strony
+      pojawil sie parametr session ???
+
+  - niezbedna dobra znajomosc HTML/HTTP !!!
+
+  - pakiet ncgi zaklada ze sie wykonuje w skrypcie cgi !
+    (tzn ze wyciaga dane z env i pisze na stdout ???)
+
+-->
+
+[mypage::header "HTML/Tcl Templates"]
+
+<p>ncgi::query = [ncgi::nvlist]</p>
+
+<!-- [
+set id [Session_Match [ncgi::nvlist]]
+  # Session_Match znajduje parametr session w request ...
+set wstaw ""
+if {$id==""} {
+  set id [Session_Create session]
+    # jesli w requescie nie ma session=??? to tworzymy nowa sesje
+  set wstaw "<p>utworzylismy nowa sesje, id = $id!</p>"
+  ##append wstaw "<form>???<input type=\"hidden\" name=\"session\" value=\"$id\"></form>"
+}
+] -->
+<p>id = [return $id]</p>
+[return $wstaw]
+
+<p>to jest strona np01.tml !!</p>
+
+<p>plik <a href="np01a.tml?session=[return $id]">np01a.tml</a></p>
+<p>plik <a href="np01a.tml">np01a.tml</a> (bez session)</p>
+
+<!-- [
+Session_Variable $id mojaZmienna 112233
+Session_Variable $id mojaZmienna2 222222
+Session_Variable $id mojaZmienna3 333333
+] -->
+
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+
+<p><a href="/mh">mh</a>, <a href="/mh/tutaj">mh/tutaj</a></p>
+
+<p>[
+global page
+set wynik "<b>page:</b><br>"
+foreach x [array names page] {
+  append wynik "$x = $page($x)<br>"
+}
+
+append wynik "<b>Httpdsock:</b><br>"
+upvar #0 Httpd[Httpd_CurrentSocket] data
+foreach x [array names data] {
+  append wynik "$x = $data($x)<br>"
+}
+
+return $wynik
+]</p>
+
+[mypage::footer]

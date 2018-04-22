@@ -1,0 +1,45 @@
+<!--[
+  #
+  # rozne eksperymenty
+  #
+
+  # - $page(query) dziala identycznie jak [ncgi::nvlist] !!!
+  # - uwaga na komentarze html/ tcl - trzeba komentowac jak tutaj!
+  #   kod tclowy w <!-- --> tez jest wykonywany
+
+  # - jak debuggowac kod tclowy w tclhttpd ???
+  # - zdefiniowac rozne pomocnicze procedury, np pokazarray
+]-->
+
+<!--
+$page(url)
+-->
+
+[mypage::header "HTML/Tcl Templates"]
+
+<p>ncgi::query = [ncgi::nvlist]</p>
+<p>\$page(query) = $page(query)</p>
+
+<p>[
+set _ ""
+foreach {n v} $page(query) {
+  append _ "$n=$v<br>"
+}
+return $_
+]</p>
+
+<p>[
+set _ ""
+foreach x [array names page] {
+  append _ "page($x)=$page($x)<br>"
+}
+return $_
+]</p>
+
+<p>to jest strona np05 !!!</p>
+
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+
+[mypage::footer]

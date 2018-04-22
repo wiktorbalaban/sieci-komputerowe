@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
+<sprawozdanie przedmiot="SIK" temat="?">
+<imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
+<nr_indeksu>421824</nr_indeksu>
+<liczba_pkt>?.?</liczba_pkt>
+<zadanie nr="?" pkt="?"></zadanie>
+</sprawozdanie>
+Zadanie D1 -------------------------------------
+stworzony klient i serwer w tcl, zobserwowaliśmy różnicę między GET i POST
+/// wydruk
+z szpiega
+
+12:23:03 localhost:8016 <--> localhost:8015
+12:23:03 waiting for new connection...
+12:23:24 connect from 127.0.0.1 localhost 8016 37954
+12:23:24 connecting to localhost:8015
+12:23:24 GET /www/sumaliczb?liczby=1+2+3+5 HTTP/1.0
+12:23:24 Accept: */*
+12:23:24 Host: localhost:8016
+12:23:24 User-Agent: Tcl http client package 2.4.5
+12:23:24 
+12:23:24 
+12:23:24 HTTP/1.0 200 Data follows
+12:23:24 Date: Wed, 04 Apr 2018 10:23:24 GMT
+12:23:24 Server: Tcl-Webserver/3.5.1 May 27, 2004
+12:23:24 Connection: Close
+12:23:24 Content-Type: text/plain
+12:23:24 Content-Length: 2
+12:23:24 
+12:23:24 11
+12:23:24 ----- closed connection -----
+12:23:24 waiting for new connection...
+12:24:32 connect from 127.0.0.1 localhost 8016 37960
+12:24:32 connecting to localhost:8015
+12:24:32 POST /www/sumaliczb HTTP/1.0
+12:24:32 Accept: */*
+12:24:32 Host: localhost:8016
+12:24:32 User-Agent: Tcl http client package 2.4.5
+12:24:32 Content-Type: application/x-www-form-urlencoded
+12:24:32 Content-Length: 14
+12:24:32 
+12:24:32 liczby=1+2+3+5
+12:24:32 HTTP/1.0 200 Data follows
+12:24:32 Date: Wed, 04 Apr 2018 10:24:32 GMT
+12:24:32 Server: Tcl-Webserver/3.5.1 May 27, 2004
+12:24:32 Connection: Close
+12:24:32 Content-Type: text/plain
+12:24:32 Content-Length: 2
+12:24:32 
+12:24:32 11
+12:24:32 ----- closed connection -----
+12:24:32 waiting for new connection...
+
+
+konsola serwera:
+
+lappend auto_path ~/tcl/tcllib
+  #% {/home/students/s421824/Desktop/sieci komputerowe/tclkit_2/lib/tcl8.4} {/home/students/s421824/Desktop/sieci komputerowe/tclkit_2/lib} {/home/students/s421824/Desktop/sieci komputerowe/tclkit_2/lib/tcllib} {/home/students/s421824/Desktop/sieci komputerowe/tclkit_2/lib/tklib} {/home/students/s421824/Desktop/sieci komputerowe/tclkit_2/lib/tk8.4} ~/tcl/tcllib
+
+set argv ""
+source ./tclhttpd3.5.1/bin/httpd_app.tcl
+rename bgerror {}
+  # uruchamia serwer...
+  # + musi istniec katalog /tmp na biezacym dysku!
+  #% 
+# directurl czyli procedura zwracajaca tresc do przegladarki
+# + url do procedury wyglada tak: http://maszyna:8015/www/strona1
+#
+
+
+Direct_Url /www
+#Direct_UrlRemove /www
+
+proc /www/strona1 args {
+  return "
+    <p>args= $args</p>
+    <p>a ku ku na stronie 1</p>
+  "
+}
+
+proc /www/strona2 args {
+  return "
+    <p>a ku ku na stronie 2</p>
+  "
+}
+
+set /www/sumaliczb text/plain
+  # tak def typ mime odpowiedzi http
+proc /www/sumaliczb {liczby} {
+    # spodziewamy sie parametru "liczby"
+    # z ciagiem liczb oddzielonych spacjami!
+    #   http://maszyna:8015/www/sumaliczb?liczby=1 2 3 4
+  set s 0
+  foreach x $liczby {incr s $x}
+  return $s
+}
+
+
+  #% 
+
+konsola klienta:
+
+package require http
+  #% 2.4.5
+set q [http::formatQuery liczby {1 2 3 5}]
+  #% liczby=1+2+3+5
+  #% liczby=1+2+3+4
+  # przygotowujemy parametry zadania http
+set h [http::geturl http://localhost:8016/www/sumaliczb -query $q]
+  #% ::http::10
+  #% ::http::9
+  #% ::http::8
+  #% ::http::7
+  #% ::http::6
+  #% ::http::5
+  #% ::http::4
+http::data $h
+  #% 11
+  #% 11
+  #% 11
+
+Zadanie D4 -------------------------------------
+bawimy się DNS i patrzymy co można się zapytać
+/// wydruk
+konsola tcl:
+
+lappend auto_path sciezka_do_tcllib; package re dns
+  #% 1.3.3
+  # + pakiet dns jest częścią zbioru tcllib;
+  #   ew. można użyć "dużego" interpa tclkit_2, patrz materiały o j.Tcl
+set n1 [dns::resolve "dns:wmi.amu.edu.pl;type=SOA"]
+  #% ::dns::17
+  #% ::dns::16
+  #% ::dns::15
+  #% ::dns::14
+  #% ::dns::12
+  #% ::dns::11
+  #% ::dns::9
+  #% ::dns::8
+  #% ::dns::7
+  #% ::dns::6
+  #% ::dns::5
+  #% ::dns::1
+  #% ::dns::1
+  # + wysyłamy zapytanie dns...
+  # + jako argument resolve można też użyć "dns:nazwa_domenowa;type=YYY"
+dns::address $n1
+  #% 
+  #% 
+  #% 
+  #% 
+  #% 150.254.78.3
+  #% 212.77.98.9
+  #% 212.77.98.9
+  #% 212.77.98.9
+  #% 212.77.98.9 212.77.100.101
+  # + kolejnosc sie zmienia!! load balancing!!!
+join [dns::result $n1] \n
+  #% name wmi.amu.edu.pl type SOA class IN ttl 57 rdlength 35 rdata {MNAME net.wmi.amu.edu.pl RNAME admini.wmi.amu.edu.pl SERIAL 2018186000 REFRESH 3600 RETRY 900 EXPIRE 1209600 MINIMUM 60}
+  #% 
+  #% 
+  #% name wmi.amu.edu.pl type A class IN ttl 300 rdlength 4 rdata 150.254.78.3
+  #% 
+  #% name wmi.amu.edu.pl type NS class IN ttl 187 rdlength 6 rdata ns2.wmi.amu.edu.pl
+name wmi.amu.edu.pl type NS class IN ttl 187 rdlength 6 rdata ns1.wmi.amu.edu.pl
+name wmi.amu.edu.pl type NS class IN ttl 187 rdlength 7 rdata dns2.amu.edu.pl
+name wmi.amu.edu.pl type NS class IN ttl 187 rdlength 6 rdata dns.amu.edu.pl
+name wmi.amu.edu.pl type NS class IN ttl 187 rdlength 7 rdata dns3.amu.edu.pl
+  #% name wp.pl type A class IN ttl 300 rdlength 4 rdata 212.77.98.9
+  #% name wp.pl type A class IN ttl 300 rdlength 4 rdata 212.77.98.9
+  #% name wp.pl type A class IN ttl 268 rdlength 4 rdata 212.77.98.9
+name wp.pl type A class IN ttl 268 rdlength 4 rdata 212.77.100.101
+  # + wszystkie odpowiedzi na zapytanie dns...
+dns::cleanup $n1
+Zadanie Przykład 1 -------------------------------------
+
+/// wydruk
+
+## uwierzytelnianie serwera --------------------------------------------
+# - klient upewnia się, że serwer jest tym za kogo się podaje ...
+
+lappend auto_path /home/students/s421824/Desktop/sieci_komputerowe/tls1.7
+  #% /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib/tcl8.4 /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib/tcllib /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib/tklib /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib/tk8.4 /home/students/s421824/Desktop/sieci_komputerowe/tls1.7
+package require tls
+  #% 1.7.11
+# uwaga (dotyczy linux-a):
+# aby zapewnić ładowanie się właściwych bibliotek libcrypto.so.* i libssl.so.*
+# należy odpowiednio ustawić zmienną LD_LIBRARY_PATH: 
+# export LD_LIBRARY_PATH=scieżka_bezwzgl_do_katalogu_tls
+
+## serwer
+tls::socket -server obsluga \
+  -keyfile newreq.pem -certfile cacert.pem \
+  -password haslo \
+  10000
+  #% sock5
+  #% sock5
+  #% sock5
+    # -keyfile: klucz pryw serwera (moze byc zawarty w cert!)
+    # -certfile: cert serwera (zawiera klucz pub)
+proc haslo {} {return "haslo"}; # haslo do klucza pryw serwera
+  #% 
+  #% 
+proc obsluga {s args} {
+  _puts "server socket $s"; # zakladam ze uruchamiamy to z konsola2c.tcl
+  tls::handshake $s
+}
+  #% 
+
+gets sock5
+
+close sock
+  #% 
+  #% 
+
+klient
+
+lappend auto_path /home/students/s421824/Desktop/sieci_komputerowe/tls1.7
+  #% /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib/tcl8.4 /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib/tcllib /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib/tklib /home/students/s421824/Desktop/sieci_komputerowe/tclkit_2/lib/tk8.4 /home/students/s421824/Desktop/sieci_komputerowe/tls1.7
+package require tls
+  #% 1.7.11
+## klient
+set s [tls::socket -require 1 -cafile newcert.pem localhost 10000]
+  #% sock5
+  #% sock9
+  #% sock8
+  #% sock7
+  #% sock6
+  #% sock5
+  # -require 1: klient żąda sprawdzenia certyfikatu serwera
+  # -cafile: certyfikat CA (chodzi m.in. o klucz publiczny CA w tym pliku
+  #    dzięki któremu klient sprawdza podpis na certyfikacie serwera)
+tls::handshake $s
+
+puts $s "A ku ku !!!"; flush $s
+
+close sock6
+  #% 
+  #% 
+  #% 
+  #% 
+  #% 

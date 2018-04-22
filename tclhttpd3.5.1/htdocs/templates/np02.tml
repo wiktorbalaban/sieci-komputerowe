@@ -1,0 +1,42 @@
+<!--
+  zdaje sie ze ncgi::redirect nie moze byc tu uzyte
+  bo to dziala tylko ze skryptami cgi ???
+    wyrzuca napisy na stdout !!!
+
+  zdaje sie ze nie mozna uzyc Httpd_RedirectSelf z Direct_Url ?!?!?!?!?
+  tylko trzeba zdefiniowac "domain handler"
+    cos tu jest nie tak!
+    redirect nie dziala tak jak sie spodziewam
+    nie uzywac takiego polaczenia komend ...
+
+-->
+
+[mypage::header "HTML/Tcl Templates"]
+
+<p>ncgi::query = [ncgi::nvlist]</p>
+
+[
+set id [Session_Match [ncgi::nvlist]]
+if {$id==""} {
+  #ncgi::redirect "?session=new"
+  Httpd_RedirectSelf "/templates/np02.tml?session=new" [Httpd_CurrentSocket]
+  return
+} else {
+  return ""
+}
+]
+<p>id = [return $id]</p>
+
+<p>to jest strona np02.tml !!</p>
+
+<!-- [
+Session_Variable $id mojaZmienna 112233
+Session_Variable $id mojaZmienna2 222222
+Session_Variable $id mojaZmienna3 333333
+] -->
+
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+
+[mypage::footer]

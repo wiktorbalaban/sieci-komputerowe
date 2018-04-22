@@ -1,0 +1,34 @@
+[mypage::header "HTML/Tcl Templates"]
+
+<p>ncgi::query = [ncgi::nvlist]</p>
+
+<!--[
+set id [Session_Match [ncgi::nvlist]]
+set wynik ""
+if {$id==""} {
+  set wynik "<p><b>brak sesji !!!</b></p>"
+}
+]-->
+<p>id = [return $id]</p>
+
+<p>to jest strona np01a.tml !!</p>
+[return $wynik]
+
+<p>powrot do pliku <a href="np01.tml?session=[return $id]">np01.tml</a></p>
+
+<p>
+mojaZmienna = [Session_Variable $id mojaZmienna]<br>
+mojaZmienna2 = [Session_Variable $id mojaZmienna2]<br>
+mojaZmienna3 = [Session_Variable $id mojaZmienna3]
+</p>
+
+<!-- [
+#after 20000
+] -->
+
+
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+
+[mypage::footer]

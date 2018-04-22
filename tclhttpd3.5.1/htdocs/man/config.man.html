@@ -1,0 +1,81 @@
+<html><head>
+<title>httpd::config - Tcl Web Server </title>
+</head>
+<! -- Generated from file '' by tcllib/doctools with format 'html'
+   -->
+<! -- Copyright &copy; 2003 Andreas Kupries &lt;andreas_kupries@users.sourceforge.net&gt;
+   -->
+<! -- CVS: $Id$ httpd::config.n
+   -->
+
+<body>
+<h1> httpd::config(n) 1.0  &quot;Tcl Web Server&quot;</h1>
+<h2><a name="name">NAME</a></h2>
+<p>
+<p> httpd::config - Configuration management
+
+
+
+
+<h2><a name="tableofcontents">TABLE OF CONTENTS</a></h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tableofcontents">TABLE OF CONTENTS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#synopsis">SYNOPSIS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#description">DESCRIPTION</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#publicapi">Public API</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#seealso">SEE ALSO</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#keywords">KEYWORDS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#copyright">COPYRIGHT</a><br><h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>
+package require <b>httpd::config ?1.0?</b><br>
+<br><table border=1 width=100% cellspacing=0 cellpadding=0><tr            bgcolor=lightyellow><td bgcolor=lightyellow><table 0 width=100% cellspacing=0 cellpadding=0><tr valign=top ><td ><a href="#1"><b class='cmd'>config::init</b> <i class='arg'>config</i> <i class='arg'>aname</i></a></td></tr>
+<tr valign=top ><td ><a href="#2"><b class='cmd'>config::cget</b> <i class='arg'>index</i></a></td></tr>
+<tr valign=top ><td ><a href="#3"><b class='cmd'>config::setValue</b> (<i class='arg'>key</i> <i class='arg'>value</i>)...</a></td></tr>
+</table></td></tr></table>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+
+The package <strong>httpd::config</strong> is a core module providing all
+other modules of the web server with commands to define and read
+global configuration data.
+
+<h2><a name="publicapi">Public API</a></h2>
+<p>
+<p>
+
+<dl>
+
+<dt><a name="1"><b class='cmd'>config::init</b> <i class='arg'>config</i> <i class='arg'>aname</i></a><dd>
+
+
+Retrieves a list of resources from disk, specifically the
+file <i class='arg'>config</i>. The array variable <i class='arg'>aname</i> contains the default
+configuration values to use, and the new, current values after the
+processing of the configuration file has completed.
+
+
+<br><br>
+<dt><a name="2"><b class='cmd'>config::cget</b> <i class='arg'>index</i></a><dd>
+
+
+Returns the value for configuration key/variable <i class='arg'>index</i>.  The
+empty string will be returned if there is no such configuration
+variable.
+
+
+<br><br>
+<dt><a name="3"><b class='cmd'>config::setValue</b> (<i class='arg'>key</i> <i class='arg'>value</i>)...</a><dd>
+
+
+Goes through the specified configuration keys, assigns them the given
+values, and then stores the changed information back to disk.  This
+call will fail if <b class='cmd'>config::init</b> has not been called before.
+
+</dl>
+
+
+
+<h2><a name="seealso">SEE ALSO</a></h2>
+<p>
+httpd
+<h2><a name="keywords">KEYWORDS</a></h2>
+<p>
+configuration, web server
+<h2><a name="copyright">COPYRIGHT</a></h2>
+<p>
+Copyright &copy; 2003 Andreas Kupries &lt;andreas_kupries@users.sourceforge.net&gt;<br>
+</body></html>
+

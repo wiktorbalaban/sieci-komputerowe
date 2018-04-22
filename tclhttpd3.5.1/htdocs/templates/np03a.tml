@@ -1,0 +1,28 @@
+[mypage::header "HTML/Tcl Templates"]
+
+<p>ncgi::query = [ncgi::nvlist]</p>
+
+<!-- [eval $::mh::obsluga_sesji] -->
+<p>id = [return $id]; nowy_id = [return $nowy_id]</p>
+
+<p>to jest strona np03a.tml !!</p>
+
+<p>powrot do pliku <a href="np03.tml">np03.tml</a></p>
+
+<p>
+mojaZmienna = [Session_Variable $id mojaZmienna]<br>
+mojaZmienna2 = [Session_Variable $id mojaZmienna2]<br>
+mojaZmienna3 = [Session_Variable $id mojaZmienna3]
+</p>
+
+<!-- [
+#after 3000
+] -->
+
+
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+
+[mypage::footer]
+

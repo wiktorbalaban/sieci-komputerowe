@@ -1,0 +1,77 @@
+<!--
+   obsluga sesji przy pomocy cookie
+   --------------------------------
+   - duzo wygodniejsze niz przez URL !!!
+   - std czas zycia cookies sie zgadza ze std czasem zycia session ???
+   	moze byc problem jesli sesja nie istnieje a cookies tak???
+   	... rozwiazany
+   	zeby sprowokowac taka sytuacje wydaj polecenie
+   	  Session_Destroy id
+   	i przeladuj strone
+     na poczatku strony uruchom:
+        eval $::mh::obsluga_sesji
+     zmienna zdef w custom/hello.tcl
+-->
+
+[mypage::header "HTML/Tcl Templates"]
+
+<p>ncgi::query = [ncgi::nvlist]</p>
+
+<!-- [
+# sprawdzamy czy istnieje cookie "sesion"
+set cookie_id ""
+catch { set cookie_id [Cookie_Get session] }
+
+# jesli cookie istnieje to czy istnieje sesja o zadanym id ???
+if {$cookie_id!=""} {
+  set id [Session_Match "session $cookie_id"]
+} else {
+  set id ""
+}
+
+# jesli sesja lub cookie nie istnieja to tworzymy nowa sesje
+# i zapisujemy cookiesa ...
+set nowy_id 0
+if {$id==""} {
+  set nowy_id 1
+  set id [Session_Create session]
+  Cookie_Set -name session -value $id
+  Cookie_Save [Httpd_CurrentSocket]
+}
+] -->
+<p>id = $id<br>
+nowy_id =$nowy_id<br>
+cookie_id = $cookie_id
+</p>
+
+<p>to jest strona np03.tml !!</p>
+
+<p>plik <a href="np03a.tml">np03a.tml</a> </p>
+
+<!-- [
+Session_Variable $id mojaZmienna 112233???
+Session_Variable $id mojaZmienna2 222222
+Session_Variable $id mojaZmienna3 333333
+] -->
+
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+
+<p>[
+global page
+set wynik "<b>page:</b><br>"
+foreach x [array names page] {
+  append wynik "$x = $page($x)<br>"
+}
+
+append wynik "<b>Httpdsock:</b><br>"
+upvar #0 Httpd[Httpd_CurrentSocket] data
+foreach x [array names data] {
+  append wynik "$x = $data($x)<br>"
+}
+
+return $wynik
+]</p>
+
+[mypage::footer]

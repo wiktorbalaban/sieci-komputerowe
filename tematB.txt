@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
+<sprawozdanie przedmiot="SIK" temat="B">
+<imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
+<nr_indeksu>421824</nr_indeksu>
+<liczba_pkt>3</liczba_pkt>
+<zadanie nr="B1" pkt="0.5"></zadanie>
+<zadanie nr="B2" pkt="0.5"></zadanie>
+<zadanie nr="60" pkt="1"></zadanie>
+<zadanie nr="61" pkt="1"></zadanie>
+</sprawozdanie>
+Zadanie 1 -------------------------------------
+podczas wchodzenia na onet.pl użyułem  netstat -A inet -p
+w konsoli
+/// wydruk
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      1 pc14c.labs.wmi.am:42334 waw02s16-in-f2.1e:https SYN_SENT    2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:56090 waw02s07-in-f2.1e:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:56942 ec2-52-18-52-246.:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:37364 waw02s14-in-f2.1e:https ESTABLISHED 2021/firefox        
+tcp        0      1 pc14c.labs.wmi.am:49046 a23-37-43-27.deplo:http SYN_SENT    2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:50598 oa132.dc1.any.one:https TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:54042 waw02s08-in-f196.:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:35558 hc-2.pdmz.onet.pl:https ESTABLISHED 2021/firefox        
+tcp        0   2607 pc14c.labs.wmi.am:54046 185.33.223.204:https    ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:59742 server-54-230-202:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:48388 waw02s08-in-f198.:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:58866 server-52-84-163-1:http ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:55760 rtax.criteo.com:https   ESTABLISHED 2021/firefox        
+tcp        0      1 pc14c.labs.wmi.am:45346 37.157.4.39:https       SYN_SENT    2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:51592 waw02s08-in-f14.1:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:34942 62.67.193.97:https      ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:54048 185.33.223.204:https    ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:34940 62.67.193.97:https      ESTABLISHED 2021/firefox        
+tcp        0      1 pc14c.labs.wmi.am:54990 waw02s08-in-f195.:https SYN_SENT    2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:52956 waw02s08-in-f14.1e:http ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:33468 152.195.39.112:https    ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:38608 ec2-52-34-107-172:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:48958 a23-37-43-27.deplo:http ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:48982 a23-37-43-27.deplo:http ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:46426 151.101.37.108:https    ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:48952 a23-37-43-27.deplo:http ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:40502 ams15s33-in-f3.1e:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:52582 37.157.2.234:https      ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:51038 lq-in-f154.1e100.:https ESTABLISHED 2021/firefox        
+tcp        0      1 pc14c.labs.wmi.am:35984 ec2-34-241-170-25:https SYN_SENT    -                   
+tcp        0      0 pc14c.labs.wmi.am:46982 104.28.12.205:https     ESTABLISHED 2021/firefox        
+tcp        0      1 pc14c.labs.wmi.am:59008 213-155-156-165.c:https LAST_ACK    -                   
+tcp        0    407 pc14c.labs.wmi.am:55946 ec2-54-246-193-16:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:58244 2.18.12.224:https       ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:47512 ec2-52-208-158-21:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:34682 edge-star-mini-sh:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:56638 ovhfr2.host.hit.g:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:49094 a23-37-43-27.deplo:http ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:33522 server-52-84-163-:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:37396 waw02s14-in-f2.1e:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:45276 server-52-222-251:https ESTABLISHED 2021/firefox        
+tcp        0      1 pc14c.labs.wmi.am:46568 host95-154-251-13:https SYN_SENT    -                   
+tcp        0      0 pc14c.labs.wmi.am:55144 93.184.220.29:http      ESTABLISHED 2021/firefox        
+tcp        0      1 pc14c.labs.wmi.am:48802 cdn.dtxngr.com:https    SYN_SENT    2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:48400 waw02s08-in-f198.:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:59192 cls9.any.onet.pl:https  ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:55312 ec2-34-249-26-191:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:46558 151.101.37.108:https    ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:43282 sg1.any.onet.pl:https   ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:60124 oa-ry-01.any.onet:https TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:45010 ec2-52-69-173-215:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:55364 93.184.220.29:http      ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:48954 a23-37-43-27.deplo:http ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:35432 waw02s08-in-f193.:https ESTABLISHED 2021/firefox        
+tcp        0    222 pc14c.labs.wmi.am:58964 213-155-156-165.c:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:44094 lib.onet.pl:https       ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:49204 a23-37-43-27.deplo:http ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:37858 185.33.223.83:https     ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:58356 waw02s08-in-f200.:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:35620 oa128.dc1.any.one:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:46652 ec2-52-57-58-112.:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:52766 85.242.178.107.bc:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:38820 2.17.157.63:https       ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:35934 ec2-34-241-170-25:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wm:kerberos4 nfs-ubuntu.wmi.amu.:nfs ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:40330 files.wmi.:microsoft-ds ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:54120 185.33.223.204:https    ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:36718 waw02s08-in-f202.:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:59878 oa-ry-01.any.onet:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:37852 185.33.223.83:https     ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:50836 waw02s05-in-f2.1e:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:54092 185.33.223.204:https    ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:48956 a23-37-43-27.deplo:http ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:48774 cdn.dtxngr.com:https    ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:52154 usite.any.onet.pl:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:39370 ec2-52-1-85-96.co:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:48966 a23-37-43-27.deplo:http TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:46578 oa181.any.onet.pl:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:55996 ec2-54-246-193-16:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:35598 oa128.dc1.any.one:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:45328 server-52-222-251:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:59746 server-54-230-202:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:60132 oa-ry-01.any.onet:https TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:50574 oa132.dc1.any.one:https TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:34742 xx-fbcdn-shv-01-w:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:56092 waw02s07-in-f2.1e:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:41478 dc1-2016.labs.wmi.:ldap ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:52188 usite.any.onet.pl:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:35880 oa128.dc1.any.one:https TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:34644 178.250.0.67:https      ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:37374 82.199.68.72:https      ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:52084 dsp.adfarm1.aditi:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:38236 ec2-35-158-9-6.eu:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:38760 2.17.157.63:https       ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:46634 host95-154-251-13:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:45328 server-52-222-251:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:59746 server-54-230-202:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:60132 oa-ry-01.any.onet:https TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:50574 oa132.dc1.any.one:https TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:34742 xx-fbcdn-shv-01-w:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:56092 waw02s07-in-f2.1e:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:41478 dc1-2016.labs.wmi.:ldap ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:52188 usite.any.onet.pl:https ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:35880 oa128.dc1.any.one:https TIME_WAIT   -                   
+tcp        0      0 pc14c.labs.wmi.am:34644 178.250.0.67:https      ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:37374 82.199.68.72:https      ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:52084 dsp.adfarm1.aditi:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:38236 ec2-35-158-9-6.eu:https ESTABLISHED -                   
+tcp        0      0 pc14c.labs.wmi.am:38760 2.17.157.63:https       ESTABLISHED 2021/firefox        
+tcp        0      0 pc14c.labs.wmi.am:46634 host95-154-251-13:https ESTABLISHED -    
+
+Zadanie 2 -------------------------------------
+uruchomiłem program i wszystko było ok, ale jeśli uruchomiłem zaraz po zamknięciu programu to już nie dzialało
+/// wydruk
+1.
+klient: pid==11169
+serwer: pid==11170
+serwer: bind()=0
+serwer: czekam na klienta nr 1
+klient: pierwsze polaczenie ...
+klient: connect()=0
+klient: write()=10
+serwer: accept()=4
+serwer: poczatek obslugi klienta nr 1
+serwer: read()=10 buf=1234567890
+serwer: write()=10
+serwer: czekam na klienta nr 2
+klient: read()=10 buf=1234567890
+klient: drugie polaczenie ...
+klient: connect()=0
+klient: write()=10
+serwer: accept()=4
+serwer: poczatek obslugi klienta nr 2
+serwer: read()=10 buf=QWERTYUIOP
+serwer: write()=10
+klient: read()=10 buf=QWERTYUIOP
+klient: wait()=11170 0000
+
+2.
+klient: pid==11174
+serwer: pid==11175
+serwer: bind()=-1
+serwer: czekam na klienta nr 1
+klient: pierwsze polaczenie ...
+klient: connect()=-1
+pojawil sie sygnal SIGPIPE !!! (pid==11174)
+klient: write()=-1
+klient: read()=-1 buf=
+
+klient: drugie polaczenie ...
+klient: connect()=-1
+pojawil sie sygnal SIGPIPE !!! (pid==11174)
+klient: write()=-1
+klient: read()=-1 buf=
+
+^C
+
+Zadanie 60 -------------------------------------
+PYTANIA:
+polecenie socketpair: socketpair(AF_UNIX,SOCK_STREAM,0,(int*)&L[i]);
+/// wydruk
+s421824@pc14c:~/Desktop/sieci komputerowe$ ./potok ls cat sort sort
+a.out
+dosemu
+dosemu-1.4.0-1.i386.rpm
+wait; pid=27936 status=0000
+info.txt
+wait; pid=27937 status=0000
+Nagłówek.txt
+wait; pid=27938 status=0000
+potok
+potok.cc
+sik_dosemu.zip
+sock01
+sock01.cc
+tematA.txt
+tematB.txt
+test.c
+unix.h
+wait; pid=27939 status=0000
+
+Zadanie 61 -------------------------------------
+symulowanie gniazdek strumieniowych w dziedzinie unixowej
+/// wydruk
+klient: pid==26176
+serwer: pid==26177
+serwer: bind()=0
+serwer: czekam na klienta nr 1
+klient: pierwsze polaczenie ...
+klient: connect()=0
+klient: write()=10
+serwer: accept()=4
+serwer: poczatek obslugi klienta nr 1
+serwer: read()=10 buf=1234567890
+serwer: write()=10
+serwer: czekam na klienta nr 2
+klient: read()=10 buf=1234567890
+klient: drugie polaczenie ...
+klient: connect()=0
+klient: write()=10
+serwer: accept()=4
+serwer: poczatek obslugi klienta nr 2
+serwer: read()=10 buf=QWERTYUIOP
+serwer: write()=10
+klient: read()=10 buf=QWERTYUIOP
+klient: wait()=26177 0000
+

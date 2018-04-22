@@ -1,0 +1,139 @@
+<html><head>
+<title>httpd::direct - Tcl Web Server </title>
+</head>
+<! -- Generated from file '' by tcllib/doctools with format 'html'
+   -->
+<! -- Copyright &copy; 2003 Andreas Kupries &lt;andreas_kupries@users.sourceforge.net&gt;
+   -->
+<! -- CVS: $Id$ httpd::direct.n
+   -->
+
+<body>
+<h1> httpd::direct(n) 1.1  &quot;Tcl Web Server&quot;</h1>
+<h2><a name="name">NAME</a></h2>
+<p>
+<p> httpd::direct - Application direct domains
+
+
+
+
+<h2><a name="tableofcontents">TABLE OF CONTENTS</a></h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tableofcontents">TABLE OF CONTENTS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#synopsis">SYNOPSIS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#description">DESCRIPTION</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#publicapi">Public API</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#seealso">SEE ALSO</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#keywords">KEYWORDS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#copyright">COPYRIGHT</a><br><h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>
+package require <b>httpd::direct ?1.1?</b><br>
+<br><table border=1 width=100% cellspacing=0 cellpadding=0><tr            bgcolor=lightyellow><td bgcolor=lightyellow><table 0 width=100% cellspacing=0 cellpadding=0><tr valign=top ><td ><a href="#1"><b class='cmd'>Direct_Url</b> <i class='arg'>virtual</i> ?<i class='arg'>prefix</i>? ?<i class='arg'>inThread</i>?</a></td></tr>
+<tr valign=top ><td ><a href="#2"><b class='cmd'>Direct_UrlRemove</b> <i class='arg'>prefix</i></a></td></tr>
+</table></td></tr></table>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+
+The package <strong>httpd::direct</strong> provides generic facilities for
+the implementation of <em>application direct</em> domains. These are
+domains where each url in the domain is handled by its own tcl
+command. Urls for which there is no command to handle it do not exists
+and cause the generation of an http error reply.
+
+<h2><a name="publicapi">Public API</a></h2>
+<p>
+<p>
+
+<dl>
+
+<dt><a name="1"><b class='cmd'>Direct_Url</b> <i class='arg'>virtual</i> ?<i class='arg'>prefix</i>? ?<i class='arg'>inThread</i>?</a><dd>
+
+
+Registers the url prefix <i class='arg'>virtual</i> as an application direct
+domain. If <i class='arg'>prefix</i> is used then it declares the command prefix to
+use when constructing the name of the tcl command handling a
+particular url (See below for more details). If either no such prefix
+is declared, or as the empty string, then the url prefix itself,
+i.e. <i class='arg'>virtual</i>, will be used as the basename of the handler
+command.
+
+The last argument specifies whether the handlers command should run in
+a separate thread. By default the main thread is used.
+
+<br><br>
+
+Regarding the construction of tcl commands for handling particular
+urls:
+
+For each url a/b/c in the domain the system will construct the command
+name <i class='arg'>prefix</i>/a/b/c and call this to generate the html for that
+url. The value of any form variable for which the procedure has an
+argument of the same name will be assigned to that argument.  All
+remaining form variables and their values will be appended to the
+command in the form (varname value)... This means that any command
+implementing an application direct domain has to have an <i class='arg'>args</i>
+argument to capture this data and prevent errors in this package when
+the command is called.
+
+<br><br>
+
+The same data is also available through the commands provided by the
+package <strong>ncgi</strong>.
+
+<br><br>
+
+The return code of the handler has important meaning. Anything
+outside of a regular return (code 0) and code 302 will be
+treated as an exception and thrown upward. As for the two
+codes mentioned above:
+
+<br><br>
+<dl>
+
+<dt><strong>0</strong><dd>
+A regular return.
+
+The return value of the handler command is used as the data to return
+to the browser. By default it is treated as of type &quot;text/html&quot;. This
+can be changed by defining a global variable of the same name as the
+handler command and assigning the correct mime content type to
+it. I.e.
+
+<p><table><tr><td bgcolor=black>&nbsp;</td><td><pre class='sample'>
+    set <i class='arg'>prefix</i>/a/b/c text/plain
+</pre></td></tr></table></p>
+
+<br><br>
+<dt><strong>302</strong><dd>
+
+This code causes the package to assume that the result of the handler
+command is an url, and causes the generation of a http redirect reply
+to that url. (Side note: 302 is also the http protocol code used in
+http redirect replies).
+<br><br>
+</dl>
+<br><br>
+
+Handlers for application direct domains are not given explicit access
+to either the channel handle for the connection, nor the connection
+status array. However they can use <b class='cmd'>upvar</b> to import <strong>sock</strong> or
+<strong>data</strong> respectively from the caller's scope, which contain this
+information.
+
+
+<br><br>
+<dt><a name="2"><b class='cmd'>Direct_UrlRemove</b> <i class='arg'>prefix</i></a><dd>
+
+
+Removes the application direct domain which was registered
+for the specified command <i class='arg'>prefix</i>.
+
+</dl>
+
+
+
+
+<h2><a name="seealso">SEE ALSO</a></h2>
+<p>
+httpd, httpd::cgi, httpd::cookie, httpd::doc_error, httpd::url, httpd::utils
+<h2><a name="keywords">KEYWORDS</a></h2>
+<p>
+application direct, domain, web server
+<h2><a name="copyright">COPYRIGHT</a></h2>
+<p>
+Copyright &copy; 2003 Andreas Kupries &lt;andreas_kupries@users.sourceforge.net&gt;<br>
+</body></html>
+

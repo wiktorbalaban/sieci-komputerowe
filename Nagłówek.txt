@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
+<sprawozdanie przedmiot="SIK" temat="?">
+<imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
+<nr_indeksu>421824</nr_indeksu>
+<liczba_pkt>?.?</liczba_pkt>
+<zadanie nr="?" pkt="?"></zadanie>
+</sprawozdanie>
+Zadanie 1 -------------------------------------
+
+/// wydruk
+

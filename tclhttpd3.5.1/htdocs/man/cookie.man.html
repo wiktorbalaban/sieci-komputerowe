@@ -1,0 +1,143 @@
+<html><head>
+<title>httpd::cookie - Tcl Web Server </title>
+</head>
+<! -- Generated from file '' by tcllib/doctools with format 'html'
+   -->
+<! -- Copyright &copy; 2003 Andreas Kupries &lt;andreas_kupries@users.sourceforge.net&gt;
+   -->
+<! -- CVS: $Id$ httpd::cookie.n
+   -->
+
+<body>
+<h1> httpd::cookie(n) 1.0  &quot;Tcl Web Server&quot;</h1>
+<h2><a name="name">NAME</a></h2>
+<p>
+<p> httpd::cookie - Cookie management
+
+
+
+
+<h2><a name="tableofcontents">TABLE OF CONTENTS</a></h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tableofcontents">TABLE OF CONTENTS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#synopsis">SYNOPSIS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#description">DESCRIPTION</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#publicapi">Public API</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cookieoptions">Cookie options</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#seealso">SEE ALSO</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#keywords">KEYWORDS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#copyright">COPYRIGHT</a><br><h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>
+package require <b>httpd::cookie ?1.0?</b><br>
+<br><table border=1 width=100% cellspacing=0 cellpadding=0><tr            bgcolor=lightyellow><td bgcolor=lightyellow><table 0 width=100% cellspacing=0 cellpadding=0><tr valign=top ><td ><a href="#1"><b class='cmd'>Cookie_Set</b> (<i class='arg'>option value</i>)...</a></td></tr>
+<tr valign=top ><td ><a href="#2"><b class='cmd'>Cookie_Save</b> <i class='arg'>sock</i> ?<i class='arg'>interp</i>?</a></td></tr>
+<tr valign=top ><td ><a href="#3"><b class='cmd'>Cookie_Make</b> (<i class='arg'>option value</i>)...</a></td></tr>
+<tr valign=top ><td ><a href="#4"><b class='cmd'>Cookie_Get</b> <i class='arg'>cookie</i></a></td></tr>
+</table></td></tr></table>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+
+The package <strong>httpd::cookie</strong> provides a number
+of convenient commands for the setup and use of cookies.
+
+<p>
+
+See <a href="http://wp.netscape.com/newsref/std/cookie_spec.html">http://wp.netscape.com/newsref/std/cookie_spec.html</a>
+for the specification of what cookies are and how they work.
+
+<p>
+
+<h2><a name="publicapi">Public API</a></h2>
+<p>
+<p>
+
+<dl>
+
+<dt><a name="1"><b class='cmd'>Cookie_Set</b> (<i class='arg'>option value</i>)...</a><dd>
+
+
+Creates new cookie using the specified options and stores it
+internally. See section <a href="#cookieoptions">Cookie options</a> for the
+allowed options and their meaning.
+
+
+<br><br>
+<dt><a name="2"><b class='cmd'>Cookie_Save</b> <i class='arg'>sock</i> ?<i class='arg'>interp</i>?</a><dd>
+
+
+Takes all the cookies which were created in the specified interpreter
+(via <b class='cmd'>Cookie_Set</b>) and instructs the Http protocol engine (see
+package <strong>httpd</strong>) to return them to the browser. If no
+interpreter is specified the current interpreter is used as data
+source.
+
+
+<br><br>
+<dt><a name="3"><b class='cmd'>Cookie_Make</b> (<i class='arg'>option value</i>)...</a><dd>
+
+
+Low-level command to encode the specified options into a cookie. The
+generated cookie is not stored internally but returned as the result
+of the command. See section <a href="#cookieoptions">Cookie options</a> for the allowed
+options and their meaning.
+
+<br><br>
+<dt><a name="4"><b class='cmd'>Cookie_Get</b> <i class='arg'>cookie</i></a><dd>
+
+
+Looks in the environment created by the Http protocol engine (see
+package <strong>httpd</strong>) for cookies sent by the browser and return a
+list of cookie values which match the specified key (<i class='arg'>cookie</i>).
+
+<br><br>
+
+<em>Danger:</em> This command prefers the data in the environment
+variables (HTTP_COOKIE) over the data in the request status
+array. This means that at certain points in the processing of a
+request the data returned by this command is out of sync with the
+actual data in the request status array.
+
+A concrete example of this are access control hooks
+
+(See <b class='cmd'>Url_AccessUnInstall</b>). When they are called the CGI
+environment has not yet been (re)initialized, meaning that this
+command will return the cookie data for the last request, and not of
+the current one.
+
+</dl>
+
+
+<h2><a name="cookieoptions">Cookie options</a></h2>
+<p>
+
+<dl>
+
+<dt><strong>name</strong><dd>
+Name of the cookie
+
+<br><br>
+<dt><strong>value</strong><dd>
+Cookie value
+
+<br><br>
+<dt><strong>path</strong><dd>
+Path restriction
+
+<br><br>
+<dt><strong>domain</strong><dd>
+Domain restriction
+
+<br><br>
+<dt><strong>expires</strong><dd>
+Time restriction.  Required format is &quot;%A, %d-%b-%Y %H:%M:%S GMT&quot; If
+it is not in GMT it has to acceptable to <b class='cmd'>clock scan</b> for
+conversion.
+
+</dl>
+
+
+
+
+<h2><a name="seealso">SEE ALSO</a></h2>
+<p>
+httpd
+<h2><a name="keywords">KEYWORDS</a></h2>
+<p>
+cookies, web server
+<h2><a name="copyright">COPYRIGHT</a></h2>
+<p>
+Copyright &copy; 2003 Andreas Kupries &lt;andreas_kupries@users.sourceforge.net&gt;<br>
+</body></html>
+

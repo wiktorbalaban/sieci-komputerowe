@@ -1,0 +1,293 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en"><head><title>tls</title>
+
+
+	<style type="text/css" media="all">@import url(/wikit.css);</style>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://wiki.tcl.tk/rss.xml"></head>
+
+<body>
+	<div class="container">
+
+	    <div class="header">
+<h1 class="title"></h1><h1 class="title"><a href="http://wiki.tcl.tk/_ref/2630">tls</a></h1>
+
+</div>
+	    
+	    <div class="wrapper">
+<div class="content">
+<p></p><p>What: TLS</p><pre> Where: <a rel="nofollow" href="http://tls.sourceforge.net/">http://tls.sourceforge.net/</a>
+        <a rel="nofollow" href="http://www.sensus.org/tcl/">http://www.sensus.org/tcl/</a>
+        <a rel="nofollow" href="http://www.openssl.org/">http://www.openssl.org/</a>
+        <a rel="nofollow" href="ftp://tktable.sf.net/pub/tktable/tls1_4_windlls-unoff.zip">ftp://tktable.sf.net/pub/tktable/tls1_4_windlls-unoff.zip</a>
+        <a rel="nofollow" href="http://mini.net/sdarchive/#Packages">http://mini.net/sdarchive/#Packages</a> - Starkit 1.4 and 1.5
+ Description: OpenSSL extension for Tcl, utilizing any standard Tcl
+        bi-directional channel (not just sockets).  Requires Tcl 8.2 or newer,
+        Trf core patch.  Runs under Win32 and Unix.
+        Currently at version 1.5.0 .
+ Updated: 11/2001
+ Contact: <a rel="nofollow" href="mailto:matt@novadigm.com">mailto:matt@novadigm.com</a>  (Matt Newman)</pre><p><a href="http://wiki.tcl.tk/2462">US</a> 2005-Jul-22: <b>Do not use Release 1.3</b> It has a horrible memory leak! Instead, get 1.5 from sourceforge, which works fine.</p><p><a rel="nofollow" href="http://www.sensus.org/tcl/tls13.tar.gz">http://www.sensus.org/tcl/tls13.tar.gz</a></p><p><a rel="nofollow" href="http://www.sensus.org/tcl/tls.htm">http://www.sensus.org/tcl/tls.htm</a></p><p><a href="http://wiki.tcl.tk/3557">Windows</a>, <a href="http://wiki.tcl.tk/1902">Solaris</a> and <a href="http://wiki.tcl.tk/1901">Linux</a> binaries available on <a href="http://wiki.tcl.tk/813">SourceForge</a> tls page.[<a rel="nofollow" href="http://sourceforge.net/project/showfiles.php?group_id=13248">1</a>]</p><p>You can grab the documentation directly out of sourceforge tls project: [<a rel="nofollow" href="http://tls.cvs.sourceforge.net/*checkout*/tls/tls/tls.htm?rev=HEAD&amp;content-type=text/html">2</a>]</p><p>[What's a complete "bill of materials" for a correct installation?]</p><hr><p><a href="http://wiki.tcl.tk/472">LV</a> To whom should one go if a problem is found in the starkit? There are at least two problems in the current tls starkit.</p><ol><li>The name used to load the tls library on SPARC Solaris SunOS 8 appears to be a problem.  At issue is the name <b>Solaris</b> when I believe <b>SunOS</b> is what the run time actually tries to use.
+</li><li>The other problem, a bit thornier, has to do with the fact
+that the tls.so in the starkit was built against 2 binary dynamically
+loadable libraries, neither of which may be available on the user's
+desktop. It would be better to statically link in these libraries.</li></ol><p><a href="http://wiki.tcl.tk/1900">PT</a> 2005-Jan-28: Raise a bug at the SF project.</p><p><a href="http://wiki.tcl.tk/472">LV</a>
+2005-Feb-07: I did file a bug report. The response was that problems
+with the binary library placed in the starkit needed to be filed some
+place else, as they have nothing to do with the sf.net project.</p><p><a href="http://wiki.tcl.tk/1900">PT</a>
+2005-Feb-07: Well it's not like there's anywhere else to report such
+things. I'll create a category and reopen the bug and assign it to me.</p><hr><p>Among <a href="http://wiki.tcl.tk/1579">Tcl testimonials</a>, consider this one from <a href="http://wiki.tcl.tk/3684">Wojciech Kocjan</a>: "[I]n Tcl, adding SSL support is usually about changing '<a href="http://wiki.tcl.tk/1114">socket</a>' to 'tls::socket' :-) Even on already opened <a href="http://wiki.tcl.tk/2342">channel</a>s
+this is mostly a matter of using 'tls::import' - you don't have to
+change anything in the software itself. This is a great thing."</p><hr><p><a href="http://wiki.tcl.tk/1900">PT</a> 22-Jul-2003: Playing with <a href="http://wiki.tcl.tk/2683">rmax</a>'s <a href="http://wiki.tcl.tk/9414">A Server Template</a>
+I decided to add SSL support to the server. See the wiki page for the
+minimal changes required to support this. The main issue is creating a
+pair of certificates to use. I'm using <a href="http://wiki.tcl.tk/9418">openssl</a> under windows and I'm being my own certificate authority. It might be possible to shortcut some of this.</p><ul><li>Create a suitable openssl configuration file</li></ul><p>Copy the distributed openssl.cnf and edit the Distinguished Name stuff to suit you.</p><ul><li>Generate a 1024-bit private key for your server</li></ul><pre> openssl genrsa -out server-private.pem 1024</pre><ul><li>Generate a self-signed public key certificate</li></ul><pre> openssl req -new -x509 -key server-private.pem -out server-public.pem -days 365 -config openssl.cfg</pre><p>Fill in the various questions or accept the defaults.</p><p>You now have a certificate pair suitable for use in the <a href="http://wiki.tcl.tk/9414">A Server Template</a> example server.</p><p>You can test this with the following client script:</p><pre>  package require tls 1.4
+  set s [::tls::socket localhost 443]
+  fconfigure $s -blocking 0 -buffering line
+  puts $s "help"
+  while {[gets $s line] &gt;= 0} { puts $line }
+  puts $s "bye"
+  while {[gets $s line] &gt;= 0} { puts $line }
+  close $s</pre><p>As
+you can see, there isn't much required on the client side - and yet all
+the communications will now be encrypted using the server's public key.
+With different options you can force the client to use a specific key
+and so on.</p><p>Alternatively, it turns out you can use the fine <a href="http://wiki.tcl.tk/1878">tkcon</a> as a client for this. This works under windows as well. Open up a <a href="http://wiki.tcl.tk/1878">tkcon</a> session and do the following</p><pre>  tkcon master package require tls
+  tkcon master tls::socket your.server.net 443</pre><p>Then
+go to the Console -&gt; Attach To -&gt; Socket menu and the opened
+channel will be listed. Select the channel (sockXXX) and your tkcon
+session is now connected to the remote server using SSL. Try <i>help</i>.</p><hr><p>Joris Ballet has written a quite good Certification Authority in tk/tcl, which is available here [<a rel="nofollow" href="http://users.skynet.be/ballet/joris/SimpleCA/index.html">3</a>], and greatly simplifies running a small CA.  It ought to be integrated into <a href="http://wiki.tcl.tk/2085">tclhttpd</a>.</p><p><a href="http://wiki.tcl.tk/8611">jmn</a> In the interests of least licensing hassles, it ought not to be integrated with tclhttpd. <a href="http://wiki.tcl.tk/1863">GPL</a> fans can do their own private integration and leave the rest of us free to plugin alternative CA solutions.</p><p><a href="http://wiki.tcl.tk/3654">CMCc</a> Reasonable point, however modifications to SimpleCA to make it integrable with tclhttpd wouldn't impact tclhttpd's license.</p><p>20040701: Upon reflection ... what does it matter if a <a href="http://wiki.tcl.tk/2393">pure-tcl</a> script is licensed GPL?  The distribution <b>is</b> source, so how does the requirement to distribute source make any difference at all? qv <a href="http://wiki.tcl.tk/11889">GPL Scripts</a>.</p><hr><p><a href="http://wiki.tcl.tk/1900">PT</a>: Wrote a script to tunnel through web proxies using TLS at <a href="http://wiki.tcl.tk/9411">SSL Tunnel</a>. This script demonstrates TLS's ability to convert an already existing connection into a secured connection.</p><hr><p><a href="http://wiki.tcl.tk/1900">PT</a> 23-Dec-2004: To connect asynchronously using TLS connections, you must first use <i>socket -async</i> to create the connection and then upgrade the link using <i>tls::import</i>. The following demonstrates this:</p><pre> package require tls
+
+ proc Write {chan} {
+    fileevent $chan writable {}
+    tls::import $chan
+    fconfigure $chan -buffering none -encoding binary -blocking 1
+    tls::handshake $chan
+    puts "[tls::status $chan]"
+    fconfigure $chan -buffering none -encoding binary -blocking 0
+ }
+
+ proc Read {chan} {
+    if {[eof $chan]} {
+        fileevent $chan readable {}
+        puts "Close $chan"
+        return
+    }
+    set d [read $chan]
+    puts "$chan [string length $d] '$d'"
+ }
+
+ proc Connect {host port} {
+    set s [socket -async $host $port]
+    fconfigure $s -blocking 0 -buffering none -encoding binary
+    fileevent $s writable [list Write $s]
+    fileevent $s readable [list Read $s]
+    return $s
+ }</pre><hr><p>Question for anyone:</p><p>Why
+doesn't the following work? (I've presented it here as 3 lines of input
+to tkcon, so you can see the output easily on a Windows system and to
+avoid timing issues.)</p><pre> % package require tls
+ % proc w {f} {fconfigure $f -blocking 0;fileevent $f readable {set ::event 0};vwait ::event}
+ % set f [tls::socket -async pop.gmail.com 995]; w $f; puts [read $f]</pre><p>That hangs.</p><p>But if I manually open the socket and do a read, it completes (albeit very slowly).  Here's what it looks like:</p><pre> Main console display active (Tcl8.4.10 / Tk8.4.10)
+ 1 % package require tls
+ 1.5.0
+ 2 % set f [tls::socket -async pop.gmail.com 995]
+ sock180
+ 3 % read $f
+ +OK Gpop ready for requests from 129.6.33.161 27pf4267101wrl
+
+ 4 %</pre><p><a href="http://wiki.tcl.tk/1900">PT</a>
+You are sitting in the vwait and never send anything. You can probably
+get that to work using tls::handshake. Usually the tls negotiation is
+only done once you send something. Calling tls::handshake can force it
+along. IIRC you want to be blocking and binary for the tls negotiation
+and then switch to non-blocking and line-mode for the POP protocol. Of
+course this has all been done and debugged in the relevant tcllib
+package so why not save yourself some grief. However here is a demo
+script that connects and the immediately quits.</p><pre>  package require tls
+  variable quit 0
+  proc Read {chan} {
+      if {[eof $chan]} { fileevent $chan readable {}; puts "Closed"; set ::forever 1; return }
+      puts [read $chan]
+      variable quit ; if {!$quit} { puts $chan QUIT; set quit 0 }
+  }
+  proc Write {chan} {
+      fileevent $chan writable {}
+      tls::handshake $chan
+      fconfigure $chan -buffering line -blocking 0 -translation crlf
+  }
+  set sock [tls::socket -async pop.gmail.com 995]
+  fconfigure $sock -encoding binary -buffering none -blocking 1
+  fileevent $sock writable [list Write $sock]
+  fileevent $sock readable [list Read $sock]
+  vwait ::forever</pre><hr><p><a href="http://wiki.tcl.tk/1280">DKF</a>: <b>Using tls for Authenticating to a Service</b></p><p><i>Scenario:</i> You've got a service (implemented in Tcl) and you only want the right users to access it.</p><p><i>Outline Solution:</i> You use SSL sockets in client-authenticated mode (servers are <i>always</i> authenticated in the SSL protocol) so that each end proves to the other who it is.</p><p><i>Prerequisite:</i>
+You've already set up a little CA and have issued the server and (each)
+client with a signed keypair. (Note that, for this sort of operation,
+I'd advise not trusting the usual commerce Website CAs; they're only of
+use precisely when you don't know who is going to connect ahead of
+time.)</p><p><i>Server Code:</i></p><pre>  package require tls
+  set acceptableDNs {
+     CN=Jimbob,O=Example,C=US
+  }
+  proc tls::password args {
+     return "theServerCertificatePassword"
+  }
+  # Assume we're on port 3000 for demonstration's sake
+  set srv [tls::socket -server acceptCmd -require 1 -cafile caPublic.pem -certfile server.pem 3000]
+  proc acceptCmd {chan addr port} {
+     # Note that when we get here, the client has *already* authenticated
+     # The checks here are *authorization* checks...
+     global acceptableDNs
+     set status [tls::status $chan]
+     set whoIsCalling [dict get $status subject]
+     if {$whoIsCalling ni $acceptableDNs} {
+        # don't want to talk to them, even though they've authenticated
+        close $chan
+        return
+     }
+     # Now set up usual socket fileevents and fconfigures...
+  }</pre><p><i>Client Code:</i></p><pre>  package require tls
+  proc tls::password args {
+     return "1, 2, 3, 4, 5? That's the code for my luggage!"
+  }
+  set chan [tls::socket -cafile caPublic.pem -certfile client.pem server.site.net 3000]
+  # Now use as normal</pre><p>That <i>should</i>
+be enough, but it's not tested code so you'll want to double-check for
+yourself. And (of course) report back here if it works. Note that doing
+the equivalent with username/password is actually similarly complex at
+the Tcl-scripting level.</p><hr><p>05/28/07 ProlyX: Is there any way to
+get TLS working for std channels? using a server (ftp like) with inetd
+but i cant get it working with TLS even with chan create to simulate an
+bidirectional channel for stdin and stdout.</p><p><a href="http://wiki.tcl.tk/1280">DKF</a>: I believe you can do it by using a <a href="http://wiki.tcl.tk/17594">reflected channel</a> (see <a href="http://wiki.tcl.tk/15933">chan create</a>) to make a fake bidirectional channel from stdin/stdout, and then <b>tls::import</b>ing that channel.</p><hr><p><b>Writing a -command Callback Handler</b></p><p><i><a href="http://wiki.tcl.tk/1280">DKF</a>: <a href="http://wiki.tcl.tk/2829">Melissa Schrumpf</a> posted this in a message[<a rel="nofollow" href="http://groups.google.com/group/comp.lang.tcl/msg/84e70c8d770b6b4b?hl=en&amp;">4</a>] to <a href="http://wiki.tcl.tk/842">comp.lang.tcl</a>.
+It shows how to go about building your own procedure that is suitable
+for use with the -command option, as well as demonstrating the use of
+tls::init.</i></p><p>So, since my search for example code for a
+-command callback proc was more or less fruitless (I believe I found
+one example that always returned 1), I will now post mine here, with an
+explanation inline:</p><pre> tls::init -certfile $files(my_cert) \
+            -keyfile $files(my_key) \
+            -ssl2 1 -ssl3 1 -tls1 0 -require 0 -request 1 \
+            -cafile $files(ca)
+
+ # This is largely based on ::tls::callback
+
+ proc tlsCbfn {option args} {
+    switch -- $option {
+
+      "error" { return 1 }
+
+      "verify" {
+         foreach {chan depth cert rc err} $args {;}
+
+         array set c $cert
+
+         if {![info exists ::AUTH($chan,authcode)]} {
+            if {$rc==1} {
+               set ::AUTH($chan,authcode) 1
+               set ::AUTH($chan,autherr) ""
+            } else {
+               set ::AUTH($chan,authcode) $rc
+               set ::AUTH($chan,autherr) $err
+            }
+         } else {
+            if {$rc!=1} {
+               set ::AUTH($chan,authcode) $rc
+               set ::AUTH($chan,autherr) $err
+            }
+         }
+
+ # The information I'm interested in is whether or not the
+ # cert validated.  I include the error message in case the
+ # application wants to take different actions on different
+ # errors (for example, accept an expired cert with a warning,
+ # but reject one for which the chain does not validate.
+
+         # TLS does not verify that the peer certificate is for
+         # the host to whom we are connected:
+         if {(($depth==0) &amp;&amp; ($::AUTH($chan,authcode)==1))} {
+            set subl [split $c(subject) "/"]
+            foreach item $subl {
+               set iteml [split $item "="]
+               if {[lindex $iteml 0]=="CN"} {
+                  set certcn [lindex $iteml 1]
+                  set certhost [lindex [split $certcn "."] 0]
+                  set peerinfo [fconfigure $chan -peername]
+                  set peercn [lindex $peerinfo 1]
+                  set peerhost [lindex [split $peercn "."] 0]
+                  if {$peercn==$peerhost} {
+                     # need full cn
+                     set mycn [lindex [fconfigure $chan -sockname] 1]
+                     set mydomainl [lrange [split $mycn "."] 1 end]
+                     set peercnl [concat $peercn $mydomainl]
+                     set peercn [join $peercnl "."]
+                  }
+
+                  # on some networks -peername host will only
+                  # be the hostname, not the full CN.
+                  # whether it is the "right" thing to do
+                  # to accept these connections is left as an
+                  # exercise for the reader.  I decided to allow
+                  # it here.  But then, I'm doing this on an intranet.
+                  # I doubt I'd allow it in the wild.
+
+                  if {$certcn!=$peercn} {
+                     set ::AUTH($chan,authcode) 0
+                     set ::AUTH($chan,autherr) "CN does not match host"
+                  }
+               }
+            }
+         }
+
+         # always accept, even if rc is not 1
+         # application connection handler will determine what to do
+         return 1
+      }
+
+      "info"   {
+         # For tracing
+ #       upvar #0 ::tls::$chan cb
+ #       set cb($major) $minor
+
+ # NOTE: I have no idea what this is supposed to do.
+ # It was in ::tls::callback, but if left in, it causes even
+ # a valid certificate chain to fail to connect.  Removing it
+ # does not seem to inhibit TLS's ability to detect:
+ #    self-signed certificates
+ #    expired certificates
+ #    certificates that are not yet valid
+ #    certificates signed by a different CA
+ # therefore, out it goes.
+
+         return 1
+      }
+
+      default  {
+         return -code error "bad option \"$option\":\
+            must be one of error, info, or verify"
+      }
+   }
+ }
+
+ # It's a good idea to unset any ::AUTH($chan,*) entries when they
+ # are no longer needed -- either after the connection has been
+ # established, and the authcode and autherr have been checked, or
+ # in the callback for cleanup/closing the socket.  Not doing so
+ # is bad bad bad, and should only be done in short-lived applications
+ # that exit after one connection.</pre><p>I hope that helps someone in the future.</p><hr><p>[ <a href="http://wiki.tcl.tk/2889">Category Cryptography</a> | <a href="http://wiki.tcl.tk/3226">Category Internet</a> | <a href="http://wiki.tcl.tk/9315">Category Security</a> | <a href="http://wiki.tcl.tk/17598">Category Channel</a> ]</p><p></p>
+
+</div>
+</div>
+	    <hr noshade="noshade">
+	    <div class="footer">
+
+		<p>Updated 28 May 2007, 21:47 GMT by dkf - <a href="http://wiki.tcl.tk/_edit/2630">Edit</a> - <a href="http://wiki.tcl.tk/_history/2630">Revisions</a> - Go to <a href="http://wiki.tcl.tk/0">The Tcler's Wiki</a> - <a href="http://wiki.tcl.tk/1">About</a> - <a href="http://wiki.tcl.tk/4">Changes</a> - <a href="http://wiki.tcl.tk/3">Help</a></p>
+		<p></p><form action="/_search" method="get">
+	    <input name="_charset_" type="hidden">
+	    <input name="S" value="Search" type="text">
+	    </form><p></p>
+	    
+
+</div>
+        
+
+</div>
+    
+<p style="display: none;"><a href="http://wiki.tcl.tk/5" rel="nofollow">DO NOT CLICK THIS LINK.</a>  It is a trap for badly behaved bots.  If you follow this link, you will be unable to use the site afterwards.</p></body></html>

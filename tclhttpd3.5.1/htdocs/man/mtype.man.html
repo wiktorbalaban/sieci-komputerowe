@@ -1,0 +1,106 @@
+<html><head>
+<title>httpd::mtype - Tcl Web Server </title>
+</head>
+<! -- Generated from file '' by tcllib/doctools with format 'html'
+   -->
+<! -- Copyright &copy; 2003 Andreas Kupries &lt;andreas_kupries@users.sourceforge.net&gt;
+   -->
+<! -- CVS: $Id$ httpd::mtype.n
+   -->
+
+<body>
+<h1> httpd::mtype(n) 1.1  &quot;Tcl Web Server&quot;</h1>
+<h2><a name="name">NAME</a></h2>
+<p>
+<p> httpd::mtype - Mime types
+
+
+
+
+<h2><a name="tableofcontents">TABLE OF CONTENTS</a></h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#tableofcontents">TABLE OF CONTENTS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#synopsis">SYNOPSIS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#description">DESCRIPTION</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#publicapi">Public API</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#keywords">KEYWORDS</a><br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#copyright">COPYRIGHT</a><br><h2><a name="synopsis">SYNOPSIS</a></h2>
+<p>
+package require <b>httpd::mtype ?1.1?</b><br>
+<br><table border=1 width=100% cellspacing=0 cellpadding=0><tr            bgcolor=lightyellow><td bgcolor=lightyellow><table 0 width=100% cellspacing=0 cellpadding=0><tr valign=top ><td ><a href="#1"><b class='cmd'>Mtype</b> <i class='arg'>path</i></a></td></tr>
+<tr valign=top ><td ><a href="#2"><b class='cmd'>Mtype_ReadTypes</b> <i class='arg'>file</i></a></td></tr>
+<tr valign=top ><td ><a href="#3"><b class='cmd'>Mtype_Accept</b> <i class='arg'>sock</i></a></td></tr>
+<tr valign=top ><td ><a href="#4"><b class='cmd'>Mtype_Match</b> <i class='arg'>accept type</i></a></td></tr>
+<tr valign=top ><td ><a href="#5"><b class='cmd'>Mtype_Add</b> <i class='arg'>suffix</i> <i class='arg'>type</i></a></td></tr>
+<tr valign=top ><td ><a href="#6"><b class='cmd'>Mtype_Reset</b> </a></td></tr>
+</table></td></tr></table>
+<h2><a name="description">DESCRIPTION</a></h2>
+<p>
+
+The package <strong>httpd::mtype</strong> provides functionality which
+determines the MIME type of a file and related utilities.
+The MIME type (e.g., text/html or image/jpeg) is used by
+the Document domain to dispatch out to type-specific document
+handlers.  For example, if there is a procedure named <b class='cmd'>Doc_image/jpeg</b>
+then the Document domain will use that procedure to handle
+requests for files of that type.
+
+<h2><a name="publicapi">Public API</a></h2>
+<p>
+<p>
+
+<dl>
+
+<dt><a name="1"><b class='cmd'>Mtype</b> <i class='arg'>path</i></a><dd>
+
+
+Determines the MIME type of the file specified by <i class='arg'>path</i> and
+returns it as the result of the command.
+
+
+<br><br>
+<dt><a name="2"><b class='cmd'>Mtype_ReadTypes</b> <i class='arg'>file</i></a><dd>
+
+
+Set a number of hardwired mappings from file extensions to mime types
+first and then reads the specified types <i class='arg'>file</i> to set up more.
+
+
+<br><br>
+<dt><a name="3"><b class='cmd'>Mtype_Accept</b> <i class='arg'>sock</i></a><dd>
+
+
+Extract the mime-types favored by the browser making the
+current request on the connection <i class='arg'>sock</i> and returns
+them as the result of the command. The result is a list.
+
+
+<br><br>
+<dt><a name="4"><b class='cmd'>Mtype_Match</b> <i class='arg'>accept type</i></a><dd>
+
+
+Compares the mime <i class='arg'>type</i> to the list of acceptable types and
+return a boolean flag. If true then the <i class='arg'>type</i> is acceptable.
+
+
+<br><br>
+<dt><a name="5"><b class='cmd'>Mtype_Add</b> <i class='arg'>suffix</i> <i class='arg'>type</i></a><dd>
+
+
+Adds a mapping from the file extension <i class='arg'>suffix</i>
+to the mime <i class='arg'>type</i> to the database maintained by this package
+
+
+
+<br><br>
+<dt><a name="6"><b class='cmd'>Mtype_Reset</b> </a><dd>
+
+
+Clears all type mappings stored in the internal database.
+
+</dl>
+
+
+
+<h2><a name="keywords">KEYWORDS</a></h2>
+<p>
+files, filesystem, mime, type, web server
+<h2><a name="copyright">COPYRIGHT</a></h2>
+<p>
+Copyright &copy; 2003 Andreas Kupries &lt;andreas_kupries@users.sourceforge.net&gt;<br>
+</body></html>
+

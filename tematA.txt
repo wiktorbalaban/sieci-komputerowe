@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
+<sprawozdanie przedmiot="SIK" temat="A">
+<imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
+<nr_indeksu>421824</nr_indeksu>
+<liczba_pkt>2.5</liczba_pkt>
+<zadanie nr="z opisu" pkt="3"></zadanie>
+<zadanie nr="1" pkt="0.5"></zadanie>
+<zadanie nr="1b" pkt="0.5"></zadanie>
+<zadanie nr="2" pkt="0.5"></zadanie>
+<zadanie nr="A1" pkt="2"></zadanie>
+<zadanie nr="A2" pkt="1.5"></zadanie>
+<zadanie nr="A3" pkt="1.5"></zadanie>
+</sprawozdanie>
+
+1. ping
+s421824@pc14b:~/Desktop/sieci komputerowe$ ping wp.pl
+PING wp.pl (212.77.98.9) 56(84) bytes of data.
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=1 ttl=56 time=10.5 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=2 ttl=56 time=9.57 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=3 ttl=56 time=14.8 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=4 ttl=56 time=14.3 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=5 ttl=56 time=8.92 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=6 ttl=56 time=11.9 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=7 ttl=56 time=12.4 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=8 ttl=56 time=15.2 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=9 ttl=56 time=11.1 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=10 ttl=56 time=11.4 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=11 ttl=56 time=10.7 ms
+64 bytes from www.wp.pl (212.77.98.9): icmp_seq=12 ttl=56 time=11.6 ms
+^C
+--- wp.pl ping statistics ---
+12 packets transmitted, 12 received, 0% packet loss, time 11016ms
+rtt min/avg/max/mdev = 8.926/11.922/15.294/1.939 ms
+
+s421824@pc14b:~/Desktop/sieci komputerowe$ ping -c 10 -s 10 wp.pl
+PING wp.pl (212.77.98.9) 10(38) bytes of data.
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=1 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=2 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=3 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=4 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=5 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=6 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=7 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=8 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=9 ttl=56
+18 bytes from www.wp.pl (212.77.98.9): icmp_seq=10 ttl=56
+
+--- wp.pl ping statistics ---
+10 packets transmitted, 10 received, 0% packet loss, time 9012ms
+
+2. traceroute
+s421824@pc14b:~/Desktop/sieci komputerowe$ traceroute wp.pl
+traceroute to wp.pl (212.77.98.9), 30 hops max, 60 byte packets
+ 1  gw-v100.core.wmi.amu.edu.pl (150.254.79.1)  1.088 ms  1.439 ms  1.746 ms
+ 2  fw.core.wmi.amu.edu.pl (150.254.76.33)  0.135 ms  0.125 ms  0.104 ms
+ 3  amur.amu.edu.pl (150.254.115.57)  4.056 ms  4.155 ms  4.228 ms
+ 4  do-pozman.amu.edu.pl (150.254.116.6)  5.530 ms  5.531 ms  5.499 ms
+ 5  pozmangw.amu.edu.pl (150.254.115.5)  5.669 ms  5.650 ms  5.635 ms
+ 6  bgplu-man-cio4.10ge.task.gda.pl (153.19.102.25)  13.636 ms  13.578 ms  13.559 ms
+ 7  wp-jro4.10ge.task.gda.pl (153.19.102.6)  13.481 ms  14.380 ms  14.315 ms
+ 8  rtr-int-1.rtr1.adm.wp-sa.pl (212.77.96.42)  71.937 ms  81.575 ms  81.495 ms
+ 9  * * *
+10  * * *
+gwiazdki do 30
+
+s421824@pc14b:~/Desktop/sieci komputerowe$ traceroute www.foxnews.com
+traceroute to www.foxnews.com (104.81.109.229), 30 hops max, 60 byte packets
+ 1  gw-v100.core.wmi.amu.edu.pl (150.254.79.1)  0.480 ms  0.837 ms  1.170 ms
+ 2  fw.core.wmi.amu.edu.pl (150.254.76.33)  0.112 ms  0.109 ms  0.137 ms
+ 3  amur.amu.edu.pl (150.254.115.57)  1.533 ms  2.365 ms  2.774 ms
+ 4  do-pozman.amu.edu.pl (150.254.116.6)  1.162 ms  1.206 ms  1.296 ms
+ 5  pozmangw.amu.edu.pl (150.254.115.5)  2.036 ms  2.017 ms  2.006 ms
+ 6  css6-XE0-0-0-99.man.poznan.pl (150.254.162.246)  1.889 ms  1.959 ms  1.952 ms
+ 7  css5-XE0-2-0-50.man.poznan.pl (150.254.210.229)  2.036 ms  1.909 ms  1.877 ms
+ 8  z-POZMAN-COM.poznan-gw2-amsix.rtr.pionier.gov.pl (212.191.237.89)  1.898 ms  1.960 ms  1.953 ms
+ 9  akamai2.plix.pl (195.182.219.98)  6.760 ms  6.869 ms  6.593 ms
+10  a104-81-109-229.deploy.static.akamaitechnologies.com (104.81.109.229)  6.534 ms  6.525 ms  6.520 ms
+
+3. arp
+s421824@pc14b:~/Desktop/sieci komputerowe$ arp
+Address                  HWtype  HWaddress           Flags Mask            Iface
+pc14d.labs.wmi.amu.edu.  ether   d4:be:d9:89:61:fc   C                     eth0
+pc14i.labs.wmi.amu.edu.  ether   d4:be:d9:89:72:6a   C                     eth0
+pc14k.labs.wmi.amu.edu.  ether   18:03:73:e9:e0:8f   C                     eth0
+gw-v100.core.wmi.amu.ed  ether   74:8e:f8:fb:d6:66   C                     eth0
+pc15m.labs.wmi.amu.edu.  ether   d4:be:d9:89:60:c5   C                     eth0
+
+s421824@pc14b:~/Desktop/sieci komputerowe$ arp -a
+pc14d.labs.wmi.amu.edu.pl (150.254.79.5) at d4:be:d9:89:61:fc [ether] on eth0
+pc14i.labs.wmi.amu.edu.pl (150.254.79.10) at d4:be:d9:89:72:6a [ether] on eth0
+pc14k.labs.wmi.amu.edu.pl (150.254.79.12) at 18:03:73:e9:e0:8f [ether] on eth0
+gw-v100.core.wmi.amu.edu.pl (150.254.79.1) at 74:8e:f8:fb:d6:66 [ether] on eth0
+pc15m.labs.wmi.amu.edu.pl (150.254.79.27) at d4:be:d9:89:60:c5 [ether] on eth0
+
+4 host i nslookup
+s421824@pc14b:~/Desktop/sieci komputerowe$ host wp.pl
+wp.pl has address 212.77.98.9
+wp.pl mail is handled by 5 mx5.wp.pl.
+wp.pl mail is handled by 0 mx.wp.pl.
+
+s421824@pc14b:~/Desktop/sieci komputerowe$ nslookup wp.pl
+Server:		150.254.78.30
+Address:	150.254.78.30#53
+
+Non-authoritative answer:
+Name:	wp.pl
+Address: 212.77.98.9
+
+s421824@pc14b:~/Desktop/sieci komputerowe$ nslookup
+> ls wp.pl
+The 'ls' command is not implemented.
+> wp.pl
+Server:		150.254.78.30
+Address:	150.254.78.30#53
+
+Non-authoritative answer:
+Name:	wp.pl
+Address: 212.77.98.9
+> 
+
+5.ifconfig
+
+s421824@pc14b:~/Desktop/sieci komputerowe$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 150.254.79.3  netmask 255.255.255.0  broadcast 150.254.79.255
+        inet6 fe80::868f:69ff:fef9:7ffd  prefixlen 64  scopeid 0x20<link>
+        ether 84:8f:69:f9:7f:fd  txqueuelen 1000  (Ethernet)
+        RX packets 210975  bytes 234768436 (234.7 MB)
+        RX errors 0  dropped 1262  overruns 0  frame 0
+        TX packets 164704  bytes 142821665 (142.8 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 20  memory 0xe1a00000-e1a20000  
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 87  bytes 13223 (13.2 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 87  bytes 13223 (13.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+6. route
+s421824@pc14b:~/Desktop/sieci komputerowe$ route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         gw-v100.core.wm 0.0.0.0         UG    1024   0        0 eth0
+150.254.79.0    0.0.0.0         255.255.255.0   U     0      0        0 eth0
+gw-v100.core.wm 0.0.0.0         255.255.255.255 UH    1024   0        0 eth0
+
+7.hostname
+s421824@pc14b:~/Desktop/sieci komputerowe$ hostname
+pc14b
+
+8. domainame
+s421824@pc14b:~/Desktop/sieci komputerowe$ domainname
+(none)
+
+9. plik /etc/resolv.conf 
+s421824@pc14b:~/Desktop/sieci komputerowe$ cat /etc/resolv.conf
+nameserver 150.254.78.30
+nameserver 150.254.78.31
+search wmi.amu.edu.pl labs.wmi.amu.edu.pl vm.wmi.amu.edu.pl sci.wmi.amu.edu.pl
+
+10. plik /etc/hosts
+s421824@pc14b:~/Desktop/sieci komputerowe$ cat /etc/hosts
+127.0.0.1   localhost
+
+::1     localhost ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+127.0.0.1 sandbox.hortonworks.com
+
+11. plik /etc/services
+amidxtape	10083/tcp			# amanda backup services
+smsqp		11201/tcp			# Alamin SMS gateway
+smsqp		11201/udp
+xpilot		15345/tcp			# XPilot Contact Port
+xpilot		15345/udp
+sgi-cmsd	17001/udp		# Cluster membership services daemon
+sgi-crsd	17002/udp
+sgi-gcd		17003/udp			# SGI Group membership daemon
+sgi-cad		17004/tcp			# Cluster Admin daemon
+isdnlog		20011/tcp			# isdn logging system
+isdnlog		20011/udp
+vboxd		20012/tcp			# voice box system
+vboxd		20012/udp
+binkp		24554/tcp			# binkp fidonet protocol
+asp		27374/tcp			# Address Search Protocol
+asp		27374/udp
+csync2		30865/tcp			# cluster synchronization tool
+dircproxy	57000/tcp			# Detachable IRC Proxy
+tfido		60177/tcp			# fidonet EMSI over telnet
+fido		60179/tcp			# fidonet EMSI over TCP
+
+# Local services
+
+12. netstat
+pokazuje otwarte gniazda komunikacyjne
+
+wydruk częściowy
+
+unix  3      [ ]         STREAM     CONNECTED     27208    
+unix  3      [ ]         STREAM     CONNECTED     26852    @/tmp/.X11-unix/X0
+unix  3      [ ]         STREAM     CONNECTED     24968    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     38911    @/tmp/.ICE-unix/1371
+unix  3      [ ]         STREAM     CONNECTED     20226    
+unix  3      [ ]         STREAM     CONNECTED     19467    
+unix  3      [ ]         STREAM     CONNECTED     29776    
+unix  3      [ ]         STREAM     CONNECTED     38562    
+unix  3      [ ]         STREAM     CONNECTED     28448    /run/user/21933/bus
+unix  3      [ ]         DGRAM                    25549    
+unix  3      [ ]         DGRAM                    26445   
+
+Zadanie 1 -------------------------------------
+W przeglądarce wchodzimy na localhost:8080
+/// wydruk
+s421824@pc14b:~/Desktop/sieci komputerowe$ nc -l -p 8080
+GET / HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+Zadanie 1b -------------------------------------
+według internetu to powinno zadziałać, ale nie działa.
+/// wydruk
+s421824@pc23c:~/Desktop/sieci komputerowe$ telnet www.onet.pl 80
+Trying 213.180.141.140...
+Connected to www.onet.pl.
+Escape character is '^]'.
+GET / HTTP/1.1
+HOST: onet.pl
+
+HTTP/1.1 301 Moved Permanently
+Server: Dreamlab Accelerator
+Date: Tue, 06 Mar 2018 11:30:43 GMT
+Content-Type: text/html
+Content-Length: 178
+Connection: keep-alive
+Location: https://www.onet.pl
+
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body bgcolor="white">
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+Connection closed by foreign host.
+
+Zadanie 2 -------------------------------------
+Nie dokońca to działa.
+/// wydruk
+s421824@pc23c:~/Desktop/sieci komputerowe$ nc pc23b.labs.wmi.amu.edu.pl 8080
+lol
+asdasd
+
+Zadanie A1 -------------------------------------
+
+

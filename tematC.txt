@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
+<sprawozdanie przedmiot="SIK" temat="C">
+<imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
+<nr_indeksu>421824</nr_indeksu>
+<liczba_pkt>6.5</liczba_pkt>
+<zadanie nr="Przykład 1" pkt="0.75"></zadanie>
+<zadanie nr="Przykład 2" pkt="0.75"></zadanie>
+<zadanie nr="Przykład 3" pkt="1.5"></zadanie>
+<zadanie nr="C1" pkt="2.5"></zadanie>
+<zadanie nr="T.0" pkt="1"></zadanie>
+</sprawozdanie>
+Zadanie Przykład 1 -------------------------------------
+ kompilacja programów w javie
+/// wydruk
+s421824@pc14g:~/Desktop/sieci komputerowe$ java c5p1b localhost 8080
+Serwer powiedzial (server said): Odebrano (Received).
+ oraz
+s421824@pc14g:~/Desktop/sieci komputerowe$ java c5p1a 8080
+Czekam (I am waiting)...
+Od: /127.0.0.1 (localhost)
+SIK 420
+
+Zadanie Przykład 2 -------------------------------------
+
+/// wydruk
+s421824@pc14g:~/Desktop/sieci komputerowe$ java c5p2a 9090
+Czekam (I am waiting)...
+Odebrano (received):
+1000
+Hello World!
+3.14159
+Serwer zakonczyl dzialanie (server finished).
+
+oraz
+
+s421824@pc14g:~/Desktop/sieci komputerowe$ java c5p2b localhost 9090
+Serwer powiedzial (server said): ODEBRANO POPRAWNIE (received correctly)
+Klient zakonczyl dzialanie (klient finished)
+
+Zadanie Przykład 3 -------------------------------------
+
+/// wydruk
+
+serwer:
+
+s421824@lts:~/Desktop/sieci komputerowe$ java SerwerObliczen
+Podaj numer portu: 1111
+Czekam na zadanie...
+Polaczenie z localhost
+Odczytywanie zadania ...
+Odebrano zadanie typu ZResztaZDzielenia
+Odczytywanie parametrow ...
+Parametry odczytane. Wykonuje zadanie ...
+*** Tu zadanie reszta z dzielenia (Task rest from dividing is here).
+Zadanie wykonane. Wysylam wyniki ...
+Gotowe. Zamykam sesje z localhost
+Czekam na zadanie...
+Polaczenie z localhost
+Odczytywanie zadania ...
+Odebrano zadanie typu ZSortuj
+Odczytywanie parametrow ...
+Parametry odczytane. Wykonuje zadanie ...
+*** Tu zadanie sortowania (task sort is here).
+Zadanie wykonane. Wysylam wyniki ...
+Gotowe. Zamykam sesje z localhost
+Czekam na zadanie...
+Polaczenie z localhost
+Odczytywanie zadania ...
+Odebrano zadanie typu ZLiczbaLosowa
+Odczytywanie parametrow ...
+Parametry odczytane. Wykonuje zadanie ...
+*** Tu zadanie liczba losowa (Task random number is here).
+Zadanie wykonane. Wysylam wyniki ...
+Gotowe. Zamykam sesje z localhost
+Czekam na zadanie...
+
+
+klient:
+
+s421824@lts:~/Desktop/sieci komputerowe$ java Klient
+Host serwera obliczen (address of th computation server): localhost
+Numer portu serwera obliczen (port number of the server): 1111
+
+
+1. Wykonaj na serwerze zadanie 1 (liczba losowa) (execute task - random number)
+2. Wykonaj na serwerze zadanie 2 (sortowanie) (execute task - sort)
+3. Wykonaj na serwerze zadanie 3 (reszta z dzielenia)(execute task - rest from dividing)
+4. Koniec (end)
+Wybor (choice): 3
+Nawiazuje polaczenie (connecting)...
+Polaczenie nawiazane (connection established).
+Wynik zadania (result of task) 3: 1
+Zamykam polaczenie (closing connection)...
+Polaczenie zamkniete (connection closed).
+
+
+1. Wykonaj na serwerze zadanie 1 (liczba losowa) (execute task - random number)
+2. Wykonaj na serwerze zadanie 2 (sortowanie) (execute task - sort)
+3. Wykonaj na serwerze zadanie 3 (reszta z dzielenia)(execute task - rest from dividing)
+4. Koniec (end)
+Wybor (choice): 2
+Nawiazuje polaczenie (connecting)...
+Polaczenie nawiazane (connection established).
+Wynik zadania (result of task) 2: [ 1 2 3 4 5 ]
+Zamykam polaczenie (closing connection)...
+Polaczenie zamkniete (connection closed).
+
+
+1. Wykonaj na serwerze zadanie 1 (liczba losowa) (execute task - random number)
+2. Wykonaj na serwerze zadanie 2 (sortowanie) (execute task - sort)
+3. Wykonaj na serwerze zadanie 3 (reszta z dzielenia)(execute task - rest from dividing)
+4. Koniec (end)
+Wybor (choice): 1
+Nawiazuje polaczenie (connecting)...
+Polaczenie nawiazane (connection established).
+Wynik zadania (result of task) 1: 0.24279838971707868
+Zamykam polaczenie (closing connection)...
+Polaczenie zamkniete (connection closed).
+
+
+1. Wykonaj na serwerze zadanie 1 (liczba losowa) (execute task - random number)
+2. Wykonaj na serwerze zadanie 2 (sortowanie) (execute task - sort)
+3. Wykonaj na serwerze zadanie 3 (reszta z dzielenia)(execute task - rest from dividing)
+4. Koniec (end)
+Wybor (choice): 4
+
+Zadanie C1 -------------------------------------
+Serwer zapisuje Klientów którzy wysłali wiadomość na port Serwera, i obsługuje 
+ich. W przypadku gdy Klient chce się odłączyć, wysyła specjalną wiadomość, która
+informuje serwer że Klient chce się odłączyć, i serwer usuwa danego Klienta z listy
+Klientów. Serwer wię dzięki temu ile jest "połączonych" klientów.
+/// wydruk
+Pliki *.java i *.class w załączniku C1
+
+Zadanie T.0 -------------------------------------
+
+/// wydruk
+## serwer 1
+#
+socket -server obsluga 10000 
+  #% sock5
+  # ustanawiamy serwer na porcie 10000, na lokalnej maszynie
+  # zgloszenie się klienta jest obsługiwane przez proc "obsluga"
+proc obsluga {s args} {
+    # s to socket klienta po stronie serwera
+  set linia [gets $s]
+  puts "od $s: $linia"
+  close $s
+    # po jednokrotnym obslużeniu klienta zamykamy połączenie
+}
+  #% 
+
+# klient
+#
+set host "localhost"
+  #% localhost
+set s [socket $host 10000]
+  #% sock5
+  # tworzymy połączenie tcp z serwerem na maszynie $host, port=10000
+  # komenda socket zwraca gniazdko repr. koniec tego połączenia
+
+puts $s "A ku ku !!!"
+  #% 
+  # wysylamy dane przez gniazdko s
+flush $s
+  #% 
+  #% 
+  #% 
+  # flush to wypróżnienie buforów
+  #   !!! bardzo ważne bez tego dane nie zostaną "wypchnięte" !!!
+
+close $s
+  #% 
+  #% 
+
+  #% 
+
+consola serwera:
+od sock6: A ku ku !!!
+
+Kolejny przykład:
+## serwer 2
+# - pozwala klientowi wysłać dowolną liczbę linii
+# - obsluguje danego klienta tak dlugo, aż nie zamknie on gniazdka!!!
+#
+socket -server obsluga 10000 
+  #% sock5
+proc obsluga {s args} {
+  fileevent $s readable "obslugaKli $s"
+    # dla każdego zgłaszającego się klienta definiujemy 
+    # obsługę zdarzenia "readable" na gniazdku tego klienta ...
+    # uwaga: jeśli można odczytać 1 znak to można odczytać cały komunikat!
+}
+  #% 
+proc obslugaKli s {
+  if {[eof $s]} { close $s; return }
+    # "eof" pojawi się dokładnie wtedy, gdy klient zamknie gniazdko!
+    # wtedy po stronie serwera usuwamy zasoby związane z tym klientem
+  set linia [gets $s]
+  puts "od $s: $linia"
+}
+  #% 
+
+Klient:
+  #% localhost
+set s [socket $host 10000]
+  #% sock5
+  #% sock5
+  # tworzymy połączenie tcp z serwerem na maszynie $host, port=10000
+  # komenda socket zwraca gniazdko repr. koniec tego połączenia
+
+puts $s "A ku ku !!!"
+  #% 
+  #% 
+  #% 
+  #% 
+  # wysylamy dane przez gniazdko s
+flush $s
+  #% 
+  #% 
+  #% 
+  #% 
+  #% 
+  #% 
+  #% 
+  # flush to wypróżnienie buforów
+  #   !!! bardzo ważne bez tego dane nie zostaną "wypchnięte" !!!
+
+close $s
+  #% 
+  #% 
+  #% 
+
+  #% 
+
+consola serwera:
+od sock6: A ku ku !!!
+od sock6: A ku ku !!!
+od sock6: A ku ku !!!
+od sock6: 
+
+Kolejne zadanie:
+to co mam na razie
+proc podlacz {host port} {
+  puts "host: $host , port: &port"
+  return [socket $host 1000]
+}

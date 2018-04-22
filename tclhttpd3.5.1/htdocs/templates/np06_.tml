@@ -1,0 +1,60 @@
+<!-- bledy w tclhttpd ...
+   1. zmienna HTTP_COOKIE nie jest ustawiana przy pierwszym odwolaniu sie do strony;
+      proba odczytania cookie-sa w dowolny sposob powoduje blad!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        blad po stronie tcl-a: "info exist env(???)" zle dziala !!!
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-->
+
+<!--[
+eval $::mh::obsluga_sesji
+]-->
+
+[mypage::header "HTML/Tcl Templates"]
+
+<p>id = $id<br>
+nowy_id =$nowy_id<br>
+cookie_id = $cookie_id
+</p>
+
+<!--[
+set s1 ""
+set s1a ""
+set s2 ""
+set s3 ""
+
+set b1 [catch { set s1 [::ncgi::cookie "cqqq"] }]
+  # dlaczego tu sie pojawia blad przy pierwszym zadaniu ???????????????
+  # blad: can't read "env(HTTP_COOKIE)": no such variable
+if {$b1} {puts "$errorInfo"}
+
+set b1a [catch { set s1a [Cookie_Get "cqqq"] }]
+  # tu jest TEN SAM blad !!!
+if {$b1a} {puts "$errorInfo"}
+
+set s2 [::ncgi::nvlist]
+#set s3 [array get env HTT*]
+
+#puts "--------------- parray env:"
+#puts "[parray env]"
+
+#puts "--------------- parray page:"
+#puts "[parray page]"
+
+Cookie_Set -name "cqqq" -value "123456"
+  # to dziala ok!!!
+#::ncgi::setCookie -name "cqqq" -value "123456"
+  # to NIE dziala - dlaczego? odp: patrz opis polecenia
+
+]-->
+
+<p>
+s1=$s1<br>
+s1a=$s1a<br>
+s2=$s2<br>
+s3=$s3<br>
+</p>
+
+[mypage::footer]
+
+

@@ -1,0 +1,22 @@
+<!--
+  ??? czy redirect dziala ze strony tml ???
+	- cos jest nie tak...
+	  trzeba zrobic reloaod na przegladarce ???
+	- generalnie: to nie dziala na tclhttpd !!!
+-->
+
+[mypage::header "HTML/Tcl Templates"]
+
+<p>ncgi::query = [ncgi::nvlist]</p>
+
+<!-- [
+Httpd_Redirect "np04a.tml" [Httpd_CurrentSocket]
+] -->
+
+<p>to jest strona np04 !!!</p>
+
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+<p>A ku ku !!!</p>
+
+[mypage::footer]
