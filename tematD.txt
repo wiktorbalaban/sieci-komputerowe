@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
 <sprawozdanie przedmiot="SIK" temat="?">
 <imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
@@ -174,7 +174,7 @@ name wp.pl type A class IN ttl 268 rdlength 4 rdata 212.77.100.101
   # + wszystkie odpowiedzi na zapytanie dns...
 dns::cleanup $n1
 Zadanie Przykład 1 -------------------------------------
-
+nie działa
 /// wydruk
 
 ## uwierzytelnianie serwera --------------------------------------------
@@ -241,3 +241,85 @@ close sock6
   #% 
   #% 
   #% 
+  
+Zadanie D3 -------------------------------------
+	klient jest napisany w tlc, jako zwykły socket
+/// wydruk
+serwer:
+
+(SieciKomputerowe) 1 % lappend auto_path D:/Studia/SieciKomputerowe/tcllib
+D:/Studia/SieciKomputerowe/tclkit.exe/lib/tcl8.4 D:/Studia/SieciKomputerowe/tclkit.exe/lib D:/Studia/SieciKomputerowe/tclkit.exe/lib/tk8.4 D:/Studia/SieciKomputerowe/tcllib
+(SieciKomputerowe) 2 % set argv ""
+(SieciKomputerowe) 3 % source D:/Studia/SieciKomputerowe/tclhttpd3.5.1/bin/httpd_app.tcl
+can't find package limit
+Running with default file descriptor limit
+/debug user "debug" password "se.8ght1z79s"
+httpd started on port 8015
+
+(SieciKomputerowe) 4 % rename bgerror {}
+(SieciKomputerowe) 5 % Direct_Url /www
+0
+(SieciKomputerowe) 6 % proc /www/strona1 args {
+>   return "
+>     <p>args= $args</p>
+>     <p>a ku ku na stronie 1</p>
+>   "
+> }
+(SieciKomputerowe) 7 % 
+
+klient:
+
+(SieciKomputerowe) 1 % set host "localhost"
+localhost
+(SieciKomputerowe) 2 % set s [socket $host 10000]
+couldn't open socket: connection refused
+(SieciKomputerowe) 3 % set s [socket $host 10000]
+couldn't open socket: connection refused
+(SieciKomputerowe) 4 % set s [socket $host 10000]
+couldn't open socket: connection refused
+(SieciKomputerowe) 5 % set s [socket $host 8016]
+sock1016
+(SieciKomputerowe) 6 % puts $s "GET /www/strona1 HTTP/1.1\nHost: localhost:8016\n"
+(SieciKomputerowe) 7 % flush $s
+(SieciKomputerowe) 8 % gets $s
+HTTP/1.1 200 Data follows
+(SieciKomputerowe) 9 % gets $s
+Date: Sun, 22 Apr 2018 16:23:07 GMT
+(SieciKomputerowe) 10 % gets $s
+Server: Tcl-Webserver/3.5.1 May 27, 2004
+(SieciKomputerowe) 11 % gets $s
+Content-Type: text/html
+(SieciKomputerowe) 12 % gets $s
+Content-Length: 53
+(SieciKomputerowe) 13 % gets $s
+(SieciKomputerowe) 14 % gets $s
+(SieciKomputerowe) 15 % gets $s
+    <p>args= </p>
+(SieciKomputerowe) 16 % gets $s
+    <p>a ku ku na stronie 1</p>
+(SieciKomputerowe) 17 % close $s
+(SieciKomputerowe) 17 % 
+
+SockSpy:
+
+18:21:37   
+18:22:13 ----- closed connection -----
+18:22:13 waiting for new connection...
+18:22:42 connect from 127.0.0.1 DESKTOP-KU2MKPF 8016 51778
+18:22:42 connecting to localhost:8015
+18:23:07 GET /www/strona1 HTTP/1.1
+18:23:07 Host: localhost:8016
+18:23:07 
+18:23:07 
+18:23:07 HTTP/1.1 200 Data follows
+18:23:07 Date: Sun, 22 Apr 2018 16:23:07 GMT
+18:23:07 Server: Tcl-Webserver/3.5.1 May 27, 2004
+18:23:07 Content-Type: text/html
+18:23:07 Content-Length: 53
+18:23:07 
+18:23:07 
+18:23:07     <p>args= </p>
+18:23:07     <p>a ku ku na stronie 1</p>
+18:23:07   
+18:25:00 ----- closed connection -----
+18:25:00 waiting for new connection...

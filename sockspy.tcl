@@ -1,4 +1,4 @@
-package re Tk; lappend auto_path ~/tcl/tcllib
+package re Tk; lappend auto_path D:/Studia/SieciKomputerowe/tcllib
   # sciezke do tcllib trzba prawd. zmienic !!! (MH)
 
 # sockspy: copyright tom poindexter 1998
