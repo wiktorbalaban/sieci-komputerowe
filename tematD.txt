@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
-<sprawozdanie przedmiot="SIK" temat="?">
+<sprawozdanie przedmiot="SIK" temat="D">
 <imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
 <nr_indeksu>421824</nr_indeksu>
-<liczba_pkt>?.?</liczba_pkt>
-<zadanie nr="?" pkt="?"></zadanie>
+<liczba_pkt>4.0</liczba_pkt>
+<zadanie nr="D1" pkt="1"></zadanie>
+<zadanie nr="D4" pkt="1"></zadanie>
+<zadanie nr="Przykład 1" pkt="1"></zadanie>
+<zadanie nr="D3" pkt="1"></zadanie>
 </sprawozdanie>
 Zadanie D1 -------------------------------------
 stworzony klient i serwer w tcl, zobserwowaliśmy różnicę między GET i POST
@@ -173,6 +176,7 @@ name wmi.amu.edu.pl type NS class IN ttl 187 rdlength 7 rdata dns3.amu.edu.pl
 name wp.pl type A class IN ttl 268 rdlength 4 rdata 212.77.100.101
   # + wszystkie odpowiedzi na zapytanie dns...
 dns::cleanup $n1
+
 Zadanie Przykład 1 -------------------------------------
 nie działa
 /// wydruk

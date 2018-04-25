@@ -1,0 +1,42 @@
+Przykład 1 -------------------------------------
+pingujemy, widzimy jak serwer odpowiada na ping
+/// wydruk
+
+Przykład 2 -------------------------------------
+traceroot wysyła dla pewności po 3 datagramy z jedną wartością ttl, żeby
+sprawdzić adres rutera pośredniczącego w połączeniu do konkretnego adresu ip
+/// wydruk
+
+Przykład 3 -------------------------------------
+segmentacja przez protokół tcp dzieli dane na kilka porcji ( segmentów).
+w wire sharku nr 1, 2 to synchronizacja. w nr 4 adres wysyłającego wysyła 1448
+bajtów danych a odbierający wysyła potwierdzenie poprzez wysłanie wartości o 
+jeden większej niż liczba odebranch bajtów (1449 ). I tak dalej aż wszystko nie 
+zostanie wysłane.
+/// wydruk
+
+
+Przykład 4 -------------------------------------
+w numerze 1 i 4 następuje synchronizacja, w nr6 wysyła datagram z danymi, w nr7
+ odbierający wysyła potwierdzenie, dalej jest finalizacja przesyłania.
+/// wydruk
+
+Przykład 5 -------------------------------------
+flaga udp jest w ostatnim fragmencie, ponieważ pofragmentowane dane są wysyłane
+od tyłu. we fragmencie 7 są dane w których jest nagłówek udp. offset pokazuje 
+po jakim bajcie należy dany fragment ummiejscowić przy skladaniu fragmentow w 
+całość.
+/// wydruk
+
+Przykład 6 -------------------------------------
+klient wysłął jedną paczkę danych. Brak fragmentacji, tylko jedna ramka wysłana.
+/// wydruk
+
+Przykład 7 -------------------------------------
+klient wysłął jedną paczkę danych. Brak fragmentacji, tylko jedna ramka wysłana.
+/// wydruk
+
+Przykład 8 -------------------------------------
+
+/// wydruk
+
