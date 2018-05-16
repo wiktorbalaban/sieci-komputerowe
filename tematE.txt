@@ -1,13 +1,13 @@
-Przykład 1 -------------------------------------
+opis 1 Przykład 1 -------------------------------------
 pingujemy, widzimy jak serwer odpowiada na ping
 /// wydruk
 
-Przykład 2 -------------------------------------
+opis 1 Przykład 2 -------------------------------------
 traceroot wysyła dla pewności po 3 datagramy z jedną wartością ttl, żeby
 sprawdzić adres rutera pośredniczącego w połączeniu do konkretnego adresu ip
 /// wydruk
 
-Przykład 3 -------------------------------------
+opis 1 Przykład 3 -------------------------------------
 segmentacja przez protokół tcp dzieli dane na kilka porcji ( segmentów).
 w wire sharku nr 1, 2 to synchronizacja. w nr 4 adres wysyłającego wysyła 1448
 bajtów danych a odbierający wysyła potwierdzenie poprzez wysłanie wartości o 
@@ -16,27 +16,78 @@ zostanie wysłane.
 /// wydruk
 
 
-Przykład 4 -------------------------------------
+opis 1 Przykład 4 -------------------------------------
 w numerze 1 i 4 następuje synchronizacja, w nr6 wysyła datagram z danymi, w nr7
  odbierający wysyła potwierdzenie, dalej jest finalizacja przesyłania.
 /// wydruk
 
-Przykład 5 -------------------------------------
+opis 1 Przykład 5 -------------------------------------
 flaga udp jest w ostatnim fragmencie, ponieważ pofragmentowane dane są wysyłane
 od tyłu. we fragmencie 7 są dane w których jest nagłówek udp. offset pokazuje 
 po jakim bajcie należy dany fragment ummiejscowić przy skladaniu fragmentow w 
 całość.
 /// wydruk
 
-Przykład 6 -------------------------------------
+opis 1 Przykład 6 -------------------------------------
 klient wysłął jedną paczkę danych. Brak fragmentacji, tylko jedna ramka wysłana.
 /// wydruk
 
-Przykład 7 -------------------------------------
+opis 1 Przykład 7 -------------------------------------
 klient wysłął jedną paczkę danych. Brak fragmentacji, tylko jedna ramka wysłana.
 /// wydruk
 
-Przykład 8 -------------------------------------
+opis 1 Przykład 8 -------------------------------------
+Klient wysyła prośbę o akceptację danych (seq, ack = 1 )
+Od razu klient kończy połączenie i wysyła że nie ma więcej danych ( fin ), ( ack, seq = 1 )
+Serwer wysyła po jakimś czasie fin ( ack = 2,ale seq = 1 )
+Klient wysyła ack = 2, i już seq = 2
+/// wydruk
+
+opis 1 Przykład 9 -------------------------------------
+Klient próbuje zsynchronizować nr sekwencji (syn) ale na tym porcie nie nasłuchuje
+żadna aplikacja, więc serwer wysyła komunikat o resecie połączenia.
+/// wydruk
+
+opis 1 Zadanie 1 -------------------------------------
+Ilość bajtów:
+    TCP = 74 + 74 + 66 + 1066 + 66 + 66 + 66 + 66 = 1544
+    UDP = 1042
+/// wydruk
+
+opis 1 Zadanie 2 -------------------------------------
+2 razy, bo zostały wysłane od klienta 2 duże paczki danych, a pomiędzy nimi została
+wysłana informacja PSH, że nie ma więcej danychu nadawcy.
+/// wydruk
+
+opis 1 Zadanie 3 -------------------------------------
+ping requesty mają w nagłówku w polu typ 8, czyli Echo Request (żądanie echa)
+ping reply ma w nagłówku w polu typ 0, czyli Echo Reply (zwrot echa – "odpowiedź na ping")
+/// wydruk
+opis 2 Przykład 1 -------------------------------------
+najpier klient i serwer wymianiają informacje o terminalu, potem następuje prośba o login ze strony serwera, i poszczególne litery loginu są wysyłane w osobnych paczkach danych, nie są buforowane. Hasło tak samo. Hasło jest jawnie wysyłane.
+/// wydruk
+
+opis 2 Przykład 2 -------------------------------------
+najpierw serwer wysyła info o rodzaju protokołu, potem wymianiają klucze, potem klient i serwer ustalają szczegóły diffie-helman group, nowe klucze, a potem już zaszysfrowane wiadomości
+/// wydruk
+
+opis 2 Przykład 3 -------------------------------------
+ftp jest opakowany tcp. Za pomocą ftp-data można przesyłać dane. ftp zawiera komendy, ale kontrolą transmisji zajmuje się tcp
+/// wydruk
+
+opis 2 Przykład 4 -------------------------------------
+procedura ssh wymienia klucze, i szyfruje połączenie, także gdzie zostały wysłane pliki można się domyślać po wielkości pakietow.
+/// wydruk
+
+opis 2 Przykład 5 -------------------------------------
+za pomocą pop3 klen przesyła nazwę urzytkownika, hasło, proi o wylistowanie wiadomości, dostaje info że ma 0 wiadomości, przy próbie poprania wiadomości ( get 1 ) serwer wysyła wiadomość o tym że nie zna komendy get
+/// wydruk
+
+opis 2 Przykład 6 -------------------------------------
+najpierw klientpyta serwer dns o adres z dolepioną końcówką związaną z uniwersytetem, na końcu pyta o "goły adres" ( www.wp.pl ) i dostaje odpowiedź w której jest ades tej witryny
+/// wydruk
+
+opis 2 Przykład 7 -------------------------------------
 
 /// wydruk
 
