@@ -84,10 +84,33 @@ za pomocą pop3 klen przesyła nazwę urzytkownika, hasło, proi o wylistowanie 
 /// wydruk
 
 opis 2 Przykład 6 -------------------------------------
-najpierw klientpyta serwer dns o adres z dolepioną końcówką związaną z uniwersytetem, na końcu pyta o "goły adres" ( www.wp.pl ) i dostaje odpowiedź w której jest ades tej witryny
+najpierw klientpyta serwer dns o adres z dolepionymi sufiksami związanymi z uniwersytetem, na końcu pyta o "goły adres" ( www.wp.pl ) i dostaje odpowiedź w której jest ades tej witryny
 /// wydruk
 
 opis 2 Przykład 7 -------------------------------------
+klient pyta się serwera wysyłając o dane o witrynie, wysyłając jej adres do sprawdzenia, a serwer odpowiada wysyłając informacje o danym adresie IP, między innymi nazwę witryny.
 
+opis 2 Przykład 8 -------------------------------------
+tosamo co poprzednie, z tym ża nazwa witryny to wp.pl
 /// wydruk
+
+opis 2 Przykład 9 -------------------------------------
+klient pyta się najpierw o nazwę adresu z sufiksami, nie otrzymał nic ciekawego, ale kiedy zapytał o "gołą" nazwę bez sufiksów, otrzymał adres IP, i 2 aliasy
+/// wydruk
+
+opis 2 Przykład 10 -------------------------------------
+klient wysyła 3 zapytania http:
+1. O kod html strony, otrzymuje ten kod
+2. o obrazek example.jpg, który zostaje przesłany przez serwer za pomocą TCP
+3. o favicon, ale nie zostaje znaleziony przez serwer
+/// wydruk
+
+opis 2 Przykład 11 -------------------------------------
+to samo co w przykładzie 10, tylko w zapytaniu GET o obrazek, jest pytanie o modyfikację, i serwer wysyła że Not Modified, więc serwer nie wysyła obrazka, ponieważ klient ma go w plikach cookie.
+/// wydruk
+
+opis 2 Przykład 12 -------------------------------------
+po wyczyszczeniu cache, klient pyta się o wszsytko tak jak w przykładzie 10, czyli nie pyta w GET o to czy plik został zmodyfikowany, a serwer wysyła poprostu ten plik.
+/// wydruk
+
 
