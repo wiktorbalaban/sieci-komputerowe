@@ -1,3 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
+<sprawozdanie przedmiot="SIK" temat="E">
+<imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
+<nr_indeksu>421824</nr_indeksu>
+<liczba_pkt>14.5</liczba_pkt>// do opis 3 przykłąd 3
+<zadanie nr="opis 1 przykład 1" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 przykład 2" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 przykład 3" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 przykład 4" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 przykład 5" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 przykład 6" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 przykład 7" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 przykład 8" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 przykład 9" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 zadanie 1" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 zadanie 2" pkt="0.5"></zadanie>
+<zadanie nr="opis 1 zadanie 3" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 1" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 2" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 3" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 4" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 5" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 6" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 7" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 8" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 9" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 10" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 11" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 przykład 12" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 zadanie 1" pkt="0.5"></zadanie>
+<zadanie nr="opis 2 zadanie 2" pkt="0.5"></zadanie>
+<zadanie nr="opis 3 przykład 1" pkt="0.5"></zadanie>
+<zadanie nr="opis 3 przykład 2" pkt="0.5"></zadanie>
+<zadanie nr="opis 3 przykład 3" pkt="0.5"></zadanie>
+</sprawozdanie>
 opis 1 Przykład 1 -------------------------------------
 pingujemy, widzimy jak serwer odpowiada na ping
 /// wydruk
@@ -113,4 +149,26 @@ opis 2 Przykład 12 -------------------------------------
 po wyczyszczeniu cache, klient pyta się o wszsytko tak jak w przykładzie 10, czyli nie pyta w GET o to czy plik został zmodyfikowany, a serwer wysyła poprostu ten plik.
 /// wydruk
 
+opis 2 Zadanie 1 -------------------------------------
+Pliki (zasoby):
+1. 200 OK, text/html line-based text data, rozmiar 179 bajtów( po rozpakowaniu, przed rozpakowaniem 147 bajtów w), przechowywane jako plik cookie
+2. 404 not found, przy prośbie klienta o favicon ico, text/html line-based text data, rozmiar 297 bajtów( po rozpakowaniu, przed rozpakowaniem 244 bajtów w), przechowywane jako plik cookie
+Typ przeglądarki: Chrome. W ilu sesjach TCP? W 3. Nazwa kanoniczna hosta: szmaragd.im.pwr.wroc.pl
+/// wydruk
 
+opis 2 Zadanie 2 -------------------------------------
+login: testek2
+hasło: poprostuXML
+/// wydruk
+
+opis 3 Przykład 1 -------------------------------------
+Klient za pierwszym razem po prostu prosi o pobranie strony html, ale za drugim razem pyta się czy strona została zedytowana od czasu jak ją zapisał w cache, i dostał odp że nie została zmodyfikowana.
+/// wydruk
+
+opis 3 Przykład 2 -------------------------------------
+Wariant aktywny różni się tym od wariantu pasywnego, że w wariancie aktywnym serwer otwiera losowy port u klienta, i wysyła na niego dane, a w trybie pasywnym to klient otwiera na serwerze port i potem otrzymuje z niego dane.
+/// wydruk
+
+opis 3 Przykład 3 -------------------------------------
+Klient pyta się serwera dns o to czy istnieje adres internetowy atos w domenie sci.wmid.amu.edu.pl, otrzymuje odp że nie ma takiego adresu. Następnie klient pyta się czy istnieje adres "atos", serwer zgłasza błąd serwera.
+/// wydruk
