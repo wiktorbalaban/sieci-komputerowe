@@ -1,0 +1,448 @@
+# pwd
+/usr/share/dosemu/drive_z
+# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:22416 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8182 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:24036264 (22.9 MiB)  TX bytes:516262 (504.1 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+# ifconfig tap0 192.168.1.1 up
+# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:22416 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8182 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:24036264 (22.9 MiB)  TX bytes:516262 (504.1 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+# ping 192.168.1.1
+PING 192.168.1.1 (192.168.1.1): 56 data bytes
+64 bytes from 192.168.1.1: seq=0 ttl=64 time=0.053 ms
+64 bytes from 192.168.1.1: seq=1 ttl=64 time=0.045 ms
+64 bytes from 192.168.1.1: seq=2 ttl=64 time=0.041 ms
+64 bytes from 192.168.1.1: seq=3 ttl=64 time=0.045 ms
+64 bytes from 192.168.1.1: seq=4 ttl=64 time=0.041 ms
+64 bytes from 192.168.1.1: seq=5 ttl=64 time=0.046 ms
+64 bytes from 192.168.1.1: seq=6 ttl=64 time=0.042 ms
+64 bytes from 192.168.1.1: seq=7 ttl=64 time=0.047 ms
+64 bytes from 192.168.1.1: seq=8 ttl=64 time=0.041 ms
+64 bytes from 192.168.1.1: seq=9 ttl=64 time=0.046 ms
+64 bytes from 192.168.1.1: seq=10 ttl=64 time=0.042 ms
+64 bytes from 192.168.1.1: seq=11 ttl=64 time=0.045 ms
+64 bytes from 192.168.1.1: seq=12 ttl=64 time=0.041 ms
+^C
+--- 192.168.1.1 ping statistics ---
+13 packets transmitted, 13 packets received, 0% packet loss
+round-trip min/avg/max = 0.041/0.044/0.053 ms
+# ping 192.168.1.2
+PING 192.168.1.2 (192.168.1.2): 56 data bytes
+^C
+--- 192.168.1.2 ping statistics ---
+21 packets transmitted, 0 packets received, 100% packet loss
+# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:22416 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8182 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:24036264 (22.9 MiB)  TX bytes:516262 (504.1 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:43 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:43 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:4088 (3.9 KiB)  TX bytes:4088 (3.9 KiB)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:18 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:756 (756.0 B)
+
+tap1      Link encap:Ethernet  HWaddr BE:88:1F:3F:C4:DE  
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+# ifconfig tap1 192.168.1.2 up
+# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:22416 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8182 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:24036264 (22.9 MiB)  TX bytes:516262 (504.1 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:43 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:43 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:4088 (3.9 KiB)  TX bytes:4088 (3.9 KiB)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:18 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:756 (756.0 B)
+
+tap1      Link encap:Ethernet  HWaddr BE:88:1F:3F:C4:DE  
+          inet addr:192.168.1.2  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+# ifconfig tap0 111.222.333.1 up
+ifconfig: bad address '111.222.333.1'
+# ifconfig tap0 192.168.1.1 up
+# ifconfig tap0 192.169.1.1 up
+# ifconfig tap0 100.100.100.1 up
+# ifconfig tap1 200.200.200.1 up
+# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:22421 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8187 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:24036890 (22.9 MiB)  TX bytes:516626 (504.5 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:43 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:43 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:4088 (3.9 KiB)  TX bytes:4088 (3.9 KiB)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          inet addr:100.100.100.1  Bcast:100.255.255.255  Mask:255.0.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:18 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:756 (756.0 B)
+
+tap1      Link encap:Ethernet  HWaddr BE:88:1F:3F:C4:DE  
+          inet addr:200.200.200.1  Bcast:200.200.200.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+# ping 100.100.100.1 
+PING 100.100.100.1 (100.100.100.1): 56 data bytes
+64 bytes from 100.100.100.1: seq=0 ttl=64 time=0.053 ms
+64 bytes from 100.100.100.1: seq=1 ttl=64 time=0.044 ms
+64 bytes from 100.100.100.1: seq=2 ttl=64 time=0.047 ms
+64 bytes from 100.100.100.1: seq=3 ttl=64 time=0.049 ms
+64 bytes from 100.100.100.1: seq=4 ttl=64 time=0.049 ms
+64 bytes from 100.100.100.1: seq=5 ttl=64 time=0.048 ms
+64 bytes from 100.100.100.1: seq=6 ttl=64 time=0.047 ms
+^C
+--- 100.100.100.1 ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 0.044/0.048/0.053 ms
+# ping 200.200.200.1
+PING 200.200.200.1 (200.200.200.1): 56 data bytes
+64 bytes from 200.200.200.1: seq=0 ttl=64 time=0.049 ms
+64 bytes from 200.200.200.1: seq=1 ttl=64 time=0.045 ms
+64 bytes from 200.200.200.1: seq=2 ttl=64 time=0.045 ms
+64 bytes from 200.200.200.1: seq=3 ttl=64 time=0.044 ms
+64 bytes from 200.200.200.1: seq=4 ttl=64 time=0.045 ms
+64 bytes from 200.200.200.1: seq=5 ttl=64 time=0.046 ms
+64 bytes from 200.200.200.1: seq=6 ttl=64 time=0.045 ms
+^C
+--- 200.200.200.1 ping statistics ---
+7 packets transmitted, 7 packets received, 0% packet loss
+round-trip min/avg/max = 0.044/0.045/0.049 ms
+# ping 200.200.200.2
+PING 200.200.200.2 (200.200.200.2): 56 data bytes
+^C
+--- 200.200.200.2 ping statistics ---
+8 packets transmitted, 0 packets received, 100% packet loss
+# ping wp.pl
+PING wp.pl (212.77.98.9): 56 data bytes
+64 bytes from 212.77.98.9: seq=0 ttl=63 time=11.548 ms
+64 bytes from 212.77.98.9: seq=1 ttl=63 time=9.645 ms
+64 bytes from 212.77.98.9: seq=2 ttl=63 time=9.125 ms
+64 bytes from 212.77.98.9: seq=3 ttl=63 time=8.990 ms
+64 bytes from 212.77.98.9: seq=4 ttl=63 time=8.946 ms
+64 bytes from 212.77.98.9: seq=5 ttl=63 time=9.905 ms
+^C
+--- wp.pl ping statistics ---
+6 packets transmitted, 6 packets received, 0% packet loss
+round-trip min/avg/max = 8.946/9.693/11.548 ms
+# ifconfig tap0 192.168.1.1 up
+# ifconfig tap1 192.168.1.2 up
+# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:22431 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8197 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:24037867 (22.9 MiB)  TX bytes:517466 (505.3 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:77 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:77 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:7112 (6.9 KiB)  TX bytes:7112 (6.9 KiB)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:18 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:756 (756.0 B)
+
+tap1      Link encap:Ethernet  HWaddr BE:88:1F:3F:C4:DE  
+          inet addr:192.168.1.2  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:252 (252.0 B)
+
+# ifconfig tap1 192.168.2.1 up
+# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:22431 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8197 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:24037867 (22.9 MiB)  TX bytes:517466 (505.3 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:77 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:77 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:7112 (6.9 KiB)  TX bytes:7112 (6.9 KiB)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:18 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:756 (756.0 B)
+
+tap1      Link encap:Ethernet  HWaddr BE:88:1F:3F:C4:DE  
+          inet addr:192.168.2.1  Bcast:192.168.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:252 (252.0 B)
+
+# ping 192.168.1.1
+PING 192.168.1.1 (192.168.1.1): 56 data bytes
+64 bytes from 192.168.1.1: seq=0 ttl=64 time=0.052 ms
+64 bytes from 192.168.1.1: seq=1 ttl=64 time=0.042 ms
+64 bytes from 192.168.1.1: seq=2 ttl=64 time=0.046 ms
+^C
+--- 192.168.1.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.042/0.046/0.052 ms
+# ping 192.168.2.1
+PING 192.168.2.1 (192.168.2.1): 56 data bytes
+64 bytes from 192.168.2.1: seq=0 ttl=64 time=0.031 ms
+64 bytes from 192.168.2.1: seq=1 ttl=64 time=0.047 ms
+64 bytes from 192.168.2.1: seq=2 ttl=64 time=0.048 ms
+^[[A64 bytes from 192.168.2.1: seq=3 ttl=64 time=0.049 ms
+64 bytes from 192.168.2.1: seq=4 ttl=64 time=0.046 ms
+^C
+--- 192.168.2.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max = 0.031/0.044/0.049 ms
+# echo 1 > /proc/sys/net/ipv4/ip_forward
+# echo 1 > /proc/sys/net/ipv4/ip_forwar 
+bash: /proc/sys/net/ipv4/ip_forwar: No such file or directory
+# ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:24954 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:9225 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:27549281 (26.2 MiB)  TX bytes:609378 (595.0 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:93 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:93 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:8456 (8.2 KiB)  TX bytes:8456 (8.2 KiB)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:18 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:756 (756.0 B)
+
+tap1      Link encap:Ethernet  HWaddr BE:88:1F:3F:C4:DE  
+          inet addr:192.168.2.1  Bcast:192.168.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 B)  TX bytes:252 (252.0 B)
+
+# iptables -L -n
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+# iptables -F
+# iptables -P FORWARD ACCEPT
+# iptables -P INPUT ACCEPT
+# iptables -P OUTPUT ACCEPT
+# iptables -F
+# iptables -L -n
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+# iptables -P FORWARD ACCEPT
+# iptables -L -n
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+# iptables -P INPUT ACCEPT
+# iptables -P OUTPUT ACCEPT
+# iptables -L -n
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+# iptables -L -n
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+# echo 1 > /proc/sys/net/ipv4/ip_forward
+# ifconfig tap0 192.168.1.1 up
+# ping 192.168.2.1
+PING 192.168.2.1 (192.168.2.1): 56 data bytes
+64 bytes from 192.168.2.1: seq=0 ttl=64 time=0.057 ms
+64 bytes from 192.168.2.1: seq=1 ttl=64 time=0.049 ms
+64 bytes from 192.168.2.1: seq=2 ttl=64 time=0.051 ms
+^C
+--- 192.168.2.1 ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max = 0.049/0.052/0.057 ms
+# ifconfig tap1 192.168.2.1 up
+# ifconfig                    
+eth0      Link encap:Ethernet  HWaddr 08:00:27:32:AB:D7  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:26855 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:10144 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:30235173 (28.8 MiB)  TX bytes:687157 (671.0 KiB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:99 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:99 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:8960 (8.7 KiB)  TX bytes:8960 (8.7 KiB)
+
+tap0      Link encap:Ethernet  HWaddr 2E:0B:2B:57:EF:EF  
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:152 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:18 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:9120 (8.9 KiB)  TX bytes:756 (756.0 B)
+
+tap1      Link encap:Ethernet  HWaddr BE:88:1F:3F:C4:DE  
+          inet addr:192.168.2.1  Bcast:192.168.2.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:92 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:5520 (5.3 KiB)  TX bytes:252 (252.0 B)
+
+# 

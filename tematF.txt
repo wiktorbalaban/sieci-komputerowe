@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sprawozdanie PUBLIC "sprawozdanie" "http://faculty.wmi.amu.edu.pl:20002/zajecia/file-storage/view/sprawozdanie.dtd">
+<sprawozdanie przedmiot="SIK" temat="?">
+<imie_nazwisko>Wiktor Bałaban</imie_nazwisko>
+<nr_indeksu>421824</nr_indeksu>
+<liczba_pkt>?.?</liczba_pkt>
+<zadanie nr="?" pkt="?"></zadanie>
+</sprawozdanie>
+Zadanie F.0a -------------------------------------
+Rzeczywiściepo wykryciu sieci 150.254.77 pojawił się bardzo gęsty obraz sieci.
+1. RTT na takim samym poziomie. Kiedy skróciłem czas próbkowania do 1 sekundy, wykres gwałtownie wzrósł, ale przy czasie 15 sekund nco najwyżej lekkie wachania wykresu.
+2. Rzeczywiście nic zego nie wykryło. No response to odp przy każdym adresie.
+/// wydruk
+
+
+Zadanie F.0b -------------------------------------
+Rzeczywiściepo wykryciu sieci 150.254.77 pojawił się bardzo gęsty obraz sieci.
+1. RTT na takim samym poziomie. Kiedy skróciłem czas próbkowania do 1 sekundy, wykres gwałtownie wzrósł, ale przy czasie 15 sekund nco najwyżej lekkie wachania wykresu.
+2. Rzeczywiście nic zego nie wykryło. No response to odp przy każdym adresie.
+/// wydruk
+Można pingować z puppy do dosów.
+
